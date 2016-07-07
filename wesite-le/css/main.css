@@ -182,31 +182,6 @@ h2 {
 	max-width: 100%;
 }
 
-/* FILTER */
-
-#filter {
-	list-style-type: none; 
-	margin-top: 40px; padding: 0
-}
-#filter:after {
-	content: '';
-	display: block;
-	clear: both;
-}
-#filter li, #filter a {
-	display: block; 
-	float: left; margin: 0
-}
-#filter a { 
-	background: #ddd; 
-	border: 1px solid #666; 
-	text-decoration: none; 
-	padding: 5px 10px;
-}
-#filter a.active {
-	background: yellow;
-}
-
 /* END */
 
 .concealed {

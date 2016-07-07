@@ -29,34 +29,25 @@ jQuery(document).ready(function ($) {
 	  	});
 	});
 
+	var Shuffle = window.shuffle;
+
 	$grid.shuffle({
 		itemSelector: '.example-grid-item'
 	});
 
-	$('#filter a').click(function (e) {
-		e.preventDefault();
-		 
-		$('#filter a').removeClass('active');
-		$(this).addClass('active');
-		 
-		var groupName = $(this).attr('data-group');
-		 
-		$grid.shuffle('shuffle', groupName );
-		$grid.masonry('layout');
-	});
-
-
-
-	// Demo.prototype.addSearchFilter = function () {
 	$('.example-search-input').bind('keyup', function (evt) {
-		console.log(evt)
 		var searchText = evt.target.value.toLowerCase();
-		console.log(penis)
 
-		penis.filter(function(element, shuffle) {
-			console.log(element)
-			return false
-		})
+		$.each( $('.example-grid-item'), function(index, child) {
+			var titleText = $(this).data('title').toLowerCase().trim();
+			if(titleText.indexOf(searchText) !== -1) {
+				$(this).show();
+				$grid.masonry('layout');
+			} else {
+				$(this).hide();
+				$grid.masonry('layout');
+			}
+		});
 	})
 
 });

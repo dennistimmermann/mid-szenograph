@@ -32,78 +32,67 @@
 		<main class="container">
 			<h1>Beispiele</h1>
 			<div class="example-search">
-				<input class="example-search-input" type="search" id="search" placeholder="Suchen..." />
+				<input class="example-search-input js-shuffle-search" type="search" id="search" placeholder="Suchen..." />
 				<button class="example-search-submit"><img class="search-icon" src="img/search.svg"></button>
 			</div>
 
 			<div class="example">
 
-				<ul id="filter">
-					<li><a class="active" href="#" data-group="all">All</a></li>
-					<li><a href="#" data-group="red">Red</a></li>
-					<li><a href="#" data-group="green">Green</a></li>
-					<li><a href="#" data-group="blue">Blue</a></li>
-					<li><a href="#" data-group="numbers">Numbers</a></li>
-					<li><a href="#" data-group="letters">Letters</a></li>
-					<li><a href="#" data-group="square">Squares</a></li>
-					<li><a href="#" data-group="circle">Circles</a></li>
-				</ul>
-
 				<div id="example-grid">
   					<div class="example-grid-sizer"></div>
-  					<div class="example-grid-item" data-groups='["all", "red"]'>
+  					<div class="example-grid-item" data-title="Rot" data-groups='["all", "red"]'>
     					<a class="example-more" href="#"><img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" /></a>
   					</div>
-  					<div class="example-grid-item" data-groups='["all", "numbers", "blue", "square"]'>
+  					<div class="example-grid-item" data-title="Schnitzel" data-groups='["all", "numbers", "blue", "square"]'>
     					<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" />
     					<div class="example-description">
 							<h2>Bacon Überschrift</h2>
 							<p>Bacon Ipsum asdsdadaadsaddadasasda</p>
 						</div>
   					</div>
-					<div class="example-grid-item" data-groups='["all", "green", "blue", "square"]' >
+					<div class="example-grid-item" data-title="Maskenball" data-groups='["all", "green", "blue", "square"]' >
 						<img class="example-img" src="img/example_placeholder.png" />
 						<div class="example-description">
 							<h2>Bacon Überschrift</h2>
 							<p>Bacon Ipsum asdsdadaadsaddadasasda</p>
 						</div>
 					</div>
-					<div class="example-grid-item" data-groups='["all", "numbers", "blue", "square"]'>
+					<div class="example-grid-item" data-title="Flugzeug" data-groups='["all", "numbers", "blue", "square"]'>
 						<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg" />
 						<div class="example-description">
 							<h2>Bacon Überschrift</h2>
 							<p>Bacon Ipsum asdsdadaadsaddsdasasda</p>
 						</div>
 					</div>
-					<div class="example-grid-item" data-groups='["all", "numbers", "blue", "square"]'>
+					<div class="example-grid-item" data-title="Blase" data-groups='["all", "numbers", "blue", "square"]'>
 						<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg" />
 						<div class="example-description">
 							<h2>Bacon Überschrift</h2>
 							<p>Bacon Ipsum asdsdadaadsaddadasasda</p>
 						</div>
 					</div>
-					<div class="example-grid-item" data-groups='["all", "numbers", "blue", "square"]'>
+					<div class="example-grid-item" data-title="Ball" data-groups='["all", "numbers", "blue", "square"]'>
 						<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg" />
 						<div class="example-description">
 							<h2>Bacon Überschrift</h2>
 							<p>Bacon Ipsum asdsdadaadsaddadasasda</p>
 						</div>
 					</div>
-					<div class="example-grid-item">
+					<div class="example-grid-item" data-title="Maske">
 						<img class="example-img" src="img/example_placeholder.png" />
 						<div class="example-description">
 							<h2>Bacon Überschrift</h2>
 							<p>Bacon Ipsum asdsdadaadsaddadasasda</p>
 						</div>
 					</div>
-					<div class="example-grid-item">
+					<div class="example-grid-item" data-title="Sport">
 						<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/golden-hour.jpg" />
 						<div class="example-description">
 							<h2>Bacon Überschrift</h2>
 							<p>Bacon Ipsum asdsdadaadsaddadasasda</p>
 						</div>
 					</div>
-					<div class="example-grid-item">
+					<div class="example-grid-item" data-title="Handschuh">
 						<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" />
 						<div class="example-description">
 							<h2>Bacon Überschrift</h2>
@@ -119,7 +108,7 @@
 			Impressum
 		</footer>
 
-		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
 		<script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
 		<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
 		<script type="text/javascript" src="js/shuffle.js"></script>
