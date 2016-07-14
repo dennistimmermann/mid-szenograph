@@ -22,13 +22,6 @@ jQuery(document).ready(function ($) {
 		$grid.masonry();
 	});
 
-	$('.example-img').click(function() {
-		console.log(this)
-		$(this).next().slideToggle( '300', function() {
-			$grid.masonry('layout');
-	  	});
-	});
-
 	var Shuffle = window.shuffle;
 
 	$grid.shuffle({
@@ -49,5 +42,27 @@ jQuery(document).ready(function ($) {
 			}
 		});
 	})
+
+	var tags = [];
+
+	$('.example-search-input').keypress(function(e) {
+		if(e.which == 13) {
+			if($(this).val() == '' || $.inArray($(this).val(), tags) != -1) {
+				$(this).val('');
+			} else {
+				var tag = $(this).val();
+				tags.push($(this).val());
+				$(this).val('');
+				$('.search-tags').append("<div class='tag'>" + tag + "<button class='delete-button' type='button'><img src='http://placehold.it/10x10'></button></div>");
+			}
+		}
+
+		$('.delete-button').click(function(){
+			var index = $.inArray($(this).parent('div').text(), tags);
+			tags.splice(index);
+			$(this).parent('div').remove();
+    	});
+
+	});
 
 });

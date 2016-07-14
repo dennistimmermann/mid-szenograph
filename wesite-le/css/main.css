@@ -40,6 +40,24 @@ h2 {
 	text-transform: uppercase;
 }
 
+.example-text p {
+	font-family: 'Hind', sans-serif;
+	font-weight: 300;
+	text-transform: none;
+	margin-top: 5px;
+}
+
+.example-text hr {
+	width: 30px;
+    border: 1px solid #fff;
+    margin: 0;
+}
+
+.example-text h2 {
+	color: #fff;
+	margin-bottom: 10px;
+}
+
 .nav-container {
 	display: flex;
 	margin: 0;
@@ -51,8 +69,8 @@ h2 {
 
 .nav-item {
 	display: flex;
-	height:140px;
-	width:20%;
+	height: 140px;
+	width: 20%;
 	justify-content: center;
 	align-items: center;
 }
@@ -131,6 +149,26 @@ h2 {
 	fill: #333;
 }
 
+.search-tags {
+	margin: 20px 0 0 0;
+}
+
+.tag {
+	display: inline-flex;
+	border: 1px solid #333;
+	font-family: 'Hind',sans serif;
+	font-size: 14px;
+	padding: 5px 10px;
+	margin: 0 10px 5px 0;
+}
+
+.delete-button {
+	border: none;
+    background-color: #ebebeb;
+    margin-left: 10px;
+    font-size: 10px;
+}
+
 .info {
     width:20px;
     height:20px;
@@ -147,10 +185,6 @@ h2 {
 
 .inline-block {
 	display: inline-block;
-}
-
-.example-more:hover {
-	
 }
 
 .example {
@@ -182,14 +216,43 @@ h2 {
 	max-width: 100%;
 }
 
-/* END */
+.example-more {
+	
+}
+
+.example-text {
+	display: none;
+}
+
+.example-more:hover .example-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	background-color: rgba(221,85,101,0.8);
+	text-align: center;
+}
 
 .concealed {
 	display: none;
 }
 
-.example-description {
-	display: none;
+.project {
+	float: left;
+	width: 70%;
+}
+
+.project p {
+	width: 80%;
+}
+
+.more {
+	float: right;
+	width: 30%;
 }
 
 .person-image {
@@ -228,6 +291,7 @@ h2 {
 }
 
 footer {
+	clear: both;
 	margin: 80px 0 20px 0;
 	text-align: center;
 }
