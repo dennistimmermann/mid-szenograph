@@ -11,7 +11,7 @@ var config = require(__dirname + '/config.js') // TODO path this
 // var result = template(locals);
 
 console.log('welcome to the szenograph backend')
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/assets'))
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
 app.use(function(req, res, next) {
@@ -23,15 +23,27 @@ app.use(function(req, res, next) {
     })
 })
 
-// adding template engine
-app.engine('mu', function(filePath, options, callback) {
-    fs.readFile(filePath, function(err, content) {
-        if(err) return callback(new Error(err))
+//delete me !
+var examples = [{
+	id: "270f74c7-0081-434d-9048-e6394af04129",
+	name: "Die Le von Malta",
+	preview_img: "img/example_placeholder.png",
+	description: "Le Ipsum",
+	input: [],
+	outputs: [],
+	tags: ["le", "van", "tran"]
+}]
 
-        var rendered = mustache.render(content.toString(), options.view, options.partials)
-        return callback(null, rendered)
-    })
-})
+// adding template engine
+// app.engine('mu', function(filePath, options, callback) {
+//     fs.readFile(filePath, function(err, content) {
+//         if(err) return callback(new Error(err))
+//
+//         var rendered = mustache.render(content.toString(), options.view, options.partials)
+//         return callback(null, rendered)
+//     })
+// })
+app.engine('mu', require('hogan-express'))
 app.set('views', './views')
 app.set('view engine', 'mu')
 
@@ -44,7 +56,13 @@ app.get('/lexikon', function (req, res) {
 })
 
 app.get('/examples', function (req, res) {
-  //
+    res.locals = {
+        test:'hi',
+        list: examples
+    }
+    res.render('examples', {
+        partials: {'header': 'header'}
+    })
 })
 
 app.get('/configurator', function (req, res) {
@@ -52,7 +70,10 @@ app.get('/configurator', function (req, res) {
 })
 
 app.get('/about', function (req, res) {
-  //
+    // res.send('Hello About!');
+    res.render('about', {
+        partials: {'header': 'header'}
+    })
 })
 
 // app.get('/admin/input', function(req, res) {
@@ -68,11 +89,10 @@ app.route('/admin/inputs')
                 if(err) return next(err)
 
                 // res.json(result)
-                res.render('admin_inputs', {
-                    'view': {
-                        list: result
-                    }
-                })
+                res.locals = {
+                    list: result
+                }
+                res.render('admin_inputs', {})
             })
         })
     })
@@ -132,10 +152,10 @@ app.route('/admin/inputs/add')
 app.route('/admin/inputs/:id')
     .get(function(req, res, next) {
         showInputDetail(req, res, function(requested) {
+            res.locals = {
+                data: requested
+            }
             res.render('admin_inputs_detail', {
-                'view': {
-                    data: requested
-                }
             })
         })
     })
@@ -149,11 +169,11 @@ app.route('/admin/inputs/:id')
 
             // res.json(result.changes[0].new_val);
             showInputDetail(req, res, function(requested) {
+                res.locals = {
+                    data: requested,
+                    debug: JSON.stringify(result)
+                }
                 res.render('admin_inputs_detail', {
-                    'view': {
-                        data: requested,
-                        debug: JSON.stringify(result)
-                    }
                 })
             })
         });
