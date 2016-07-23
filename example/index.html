@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>ScrollTrigger - Scroll based animations with ease</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="">
+
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/demo.css" rel="stylesheet">
+</head>
+<style>
+.test {
+  width: 100px;
+	transition: width 2.2s ease-in-out;
+  transform: scale(2);
+}
+.test2 {
+  transition: width 2.2s ease-in-out;
+  transform: scale(1);
+}
+.box{
+  margin-top: 50px;
+  display: flex;
+	justify-content: center;
+	z-index: 100000;
+	display: block;
+}
+</style>
+<body>
+	<div class="block">
+		<div class="box">
+			<img class="test2" id="myP"style="position:fixed" src="img/logo3.png"></img>
+			<svg viewBox="0 0 60 60">
+				<path d="M52.254 18.327c0.816-0.804 2.127-0.804 2.937 0s0.813 2.103 0 2.907l-23.724 23.49c-0.81 0.804-2.121 0.804-2.937 0l-23.724-23.49c-0.81-0.804-0.81-2.103 0-2.907 0.813-0.804 2.127-0.804 2.937 0l22.257 21.423 22.254-21.423z"></path>
+			</svg>
+		</div>
+	</div>
+
+
+	<div class="block2">
+		<div class="block2hintergrund"></div>
+		<div class="block2overlay">
+			<h1 data-scroll="toggle(.fromTopIn, .fromTopOut) addHeight"></h1>
+			<h2 data-scroll="toggle(.fromBottomIn, .fromBottomOut) addHeight">
+			DER SZENOGRAF IST EIN TOOL ZUR ERSTELLUNG EINES INTERAKTIVEN BÜHNENBILDES</h2>
+		</div>
+	</div>
+
+	<div class="block3 ">
+		<h2 data-scroll="toggle(.fromBottomIn, .fromBottomOut) addHeight">WÄHLE EINEN BEGRIFF AUS DEM KONFIGURATOR AUS MIT DEM GEARBEITET WERDEN SOLL</h2>
+
+	</div>
+
+	<div class="block4 ">
+		<h2 data-scroll="toggle(.fromBottomIn, .fromBottomOut) addHeight">Hier erscheint das Video</h2>
+
+		<h1 data-scroll="toggle(.scaleDownIn, .scaleDownOut) addHeight"></h1>
+		<h2 data-scroll="toggle(.fromBottomIn, .fromBottomOut) addHeight"></h2>
+	</div>
+<div class="quer">
+</div>
+	<div class="block5">
+		<div class="blocklinks1">
+			<div class="herz" data-scroll="toggle(.fromLeftIn, .fromLeftOut) addHeight">
+				<img class="herz" src="img/Layer5_1.png" />
+			</div>
+			<div class="hand" data-scroll="toggle(.fromLeftIn, .fromLeftOut) addHeight">
+				<img class="herz" src="img/Layer5_2.png" />
+			</div>
+			<div class="handy" data-scroll="toggle(.fromLeftIn, .fromLeftOut) addHeight">
+				<img class="herz" src="img/Layer5_3.png" />
+			</div>
+			<div class="auge" data-scroll="toggle(.fromLeftIn, .fromLeftOut) addHeight">
+				<img class="herz" src="img/Layer5_4.png" />
+			</div>
+		</div>
+		<div class="blockrechts1">
+			<h2 class="fontb1" data-scroll="toggle(.fromRightIn, .fromRightOut) addHeight">SZENOGRAFISCHE ELEMENTE</h2>
+			<h3 class="fontb2" data-scroll="toggle(.fromRightIn, .fromRightOut) addHeight" data-scroll-showCallback="counter">messbare Inputs </h3>
+		</div>
+	</div>
+		<h2 class="fontb1" data-scroll="toggle(.fromRightIn, .fromRightOut) addHeight">SZENOGRAFISCHE OUTPUTS</h2>
+<div>
+
+</div>
+	<script>
+	window.onscroll = function() {myFunction()};
+
+	function myFunction() {
+	    if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 10) {
+	        document.getElementById("myP").className = "test";
+	    } else {
+	        document.getElementById("myP").className = "test2";
+	    }
+	}
+	</script>
+
+
+
+
+	<script src="js/ScrollTrigger.min.js"></script>
+	<script>
+		window.counter = function() {
+			// this refers to the html element with the data-scroll-showCallback tag
+			var span = this.querySelector('span');
+			var current = parseInt(span.textContent);
+
+			span.textContent = current + 1;
+		};
+
+		document.addEventListener('DOMContentLoaded', function() {
+			ScrollTrigger.init();
+		});
+	</script>
+
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:200,300,500,700" rel="stylesheet">
+</body>
+
+</html>

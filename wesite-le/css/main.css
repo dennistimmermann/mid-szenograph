@@ -237,8 +237,12 @@ h2 {
 	text-align: center;
 }
 
-.concealed {
+/*.concealed {
 	display: none;
+}*/
+
+.found {
+	display: block;
 }
 
 .project {

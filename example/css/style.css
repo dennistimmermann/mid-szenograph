@@ -1,0 +1,282 @@
+/**
+ * Basic layout, for animation examples, check demo.css
+ */
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body {
+
+  font-family: 'Hind-Bold', sans-serif;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+}
+a {
+
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.25s ease;
+}
+a:hover {
+
+}
+h1 {
+    font-size: 4em;
+    font-weight: 200;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: normal;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+h2 {
+    font-weight: 300;
+    font-size: 2.3em;
+    line-height: 1.5em;
+    color: white;
+    -webkit-font-smoothing: subpixel-antialiased;
+    font-family: 'Hind-Bold', sans-serif;
+    text-transform: uppercase;
+}
+h3 {
+    font-weight: 500;
+    font-size: 1em;
+    line-height: 1.5em;
+    color: black;
+    margin: 80px 0 0 0;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+div.block {
+    position: relative;
+    height: 80vh;
+    padding: 20vh 15vw 0 15vw;
+    background-color: #dfdee0;
+}
+div.block2 {
+    position: relative;
+    height: 80vh;
+    padding: 20vh 15vw 0 15vw;
+}
+.block2hintergrund {
+    position: absolute;
+    top: -225px;
+    left: 0px;
+    height: 85vw;
+    width: 100vw;
+    background-position: center;
+    background-image: url(../img/buhne.png);
+    background-repeat: no-repeat;
+    z-index: 1000;
+}
+.block2overlay {
+    position: relative;
+    z-index: 2000;
+}
+.logobox {
+    float: left;
+    height: 10px;
+    margin-left: 188px;
+}
+.test {
+
+  width: 100px;
+  float: left;
+/*transition: width 2.2s ease-in-out;*/
+  transform: scale(1);
+
+}
+.test2 {
+      width: 900px;
+      float: left;
+
+    /*transition: width 2.2s ease-in-out;*/
+    transform: scale(1.5);
+
+}
+/*.box{
+  margin-top: 300px;
+  display: block;
+  text-align: center;
+  margin-left: -150px;
+
+}*/
+div.logo{
+  float: left;
+  margin-left: 10px;
+  height: 100px;
+}
+.logo {
+	float: left;
+	margin-left: 10px;
+	height: 100px;
+}
+.logo2 {
+	/* float: left; */
+	margin: 10px;
+	height: 93px;
+	margin-top: -459px;
+	margin-bottom: -71px;
+	margin-left: -10px;
+	/* margin-top: 62px; */
+}
+.sz1 {
+    background: red;
+}
+.buhne {
+    height: 90%;
+}
+div.block svg {
+    position: absolute;
+    bottom: 50px;
+    width: 30px;
+    animation: chevronAnimation 4s ease-in-out 0s infinite;
+}
+.block3 {
+    position: relative;
+    height: 80vh;
+    padding: 20vh 15vw 0 15vw;
+    background-color: #3f3a3a;
+    color: white;
+}
+.block4 {
+    position: relative;
+    height: 80vh;
+    padding: 20vh 15vw 0 15vw;
+    background-color: #ead2d4;
+    color: white;
+}
+.block5 {
+    position: relative;
+    height: 80vh;
+    padding: 20vh 15vw 0 15vw;
+
+    color: #e86d78;
+}
+.quer{
+    height: 20vh;
+    width: 8vw;
+    background-color: #ededed;
+    transform: matrix3d(24.581487, 0.027872, 0, 0.007872,
+                    0, 6.13, 0, 0,
+                    0, 0, 1, 0,
+                    1, -1, 0, 1);
+ transform-origin: 0px 0px 0px;
+
+
+ /* Need to make sure you define the width and height */
+
+}
+.blocklinks1 {
+    float: left;
+    margin-left: -92px;
+    color: black;
+    float: left;
+}
+.blockrechts1 {
+    float: right;
+    margin-left: 10px;
+    float: right;
+		margin-top: -289px;
+
+}
+.fontb1 {
+    color: #e86d78;
+    margin-left: 374px;
+    margin-top: 69px;
+}
+.fontb2 {
+    color: block;
+    margin-left: 374px;
+    margin-top: 69px;
+}
+.herz {
+    height: 50px;
+    padding-left: -26px;
+    padding-right: 610px;
+}
+.hand {
+    height: 30px;
+    padding-left: -26px;
+    padding-right: 889px;
+}
+.handy {
+    height: 30px;
+    padding-left: -26px;
+    padding-right: 434px;
+}
+.auge {
+    height: 30px;
+    padding-left: -26px;
+    padding-right: 563px;
+}
+.block6 {
+    position: relative;
+    padding: 20vh 15vw 0 15vw;
+
+    color: #e86d78;
+}
+.blocklinks2 {
+margin-left: -489px;
+/* margin-right: 45px; */
+color: black;
+float: left;
+}
+.blockrechts2 {
+    float: right;
+    margin-left: 10px;
+    float: right;
+		margin-top: -289px;
+
+}
+div.block svg path {}
+div.block:nth-child(1n) {}
+div.block:nth-child(2n) {}
+div.block:nth-child(3n) {}
+
+/**
+ * Simple keyframes animation for the chevron on the first slide
+ */
+
+@keyframes chevronAnimation {
+    0% {
+        transform: translate(0, 0) scale(1.0, 1.0);
+    }
+    50% {
+        transform: translate(0, 5px) scale(0.8, 0.8);
+    }
+    100% {
+        transform: translate(0, 0) scale(1.0, 1.0);
+    }
+}
+
+/**
+ * Responsiveness
+ */
+
+@media screen and (max-width: 1024px) {
+    body {
+        font-size: 18px;
+        line-height: 27px;
+    }
+}
+@media screen and (max-width: 800px) {
+    h1 span {
+        display: block;
+    }
+    div.block {
+        height: 85vh;
+        padding: 15vh 15vw 0 15vw;
+    }
+}
+@media screen and (max-width: 420px) {
+    body {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+@media screen and (max-width: 360px) {
+    h1 {
+        font-size: 3em;
+    }
+}
