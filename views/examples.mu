@@ -29,7 +29,7 @@
 					<!--  template item -->
 
 					{{#list}}
-					<div class="example-grid-item" data-title="Rot" data-groups='["all", "red"]'>
+					<div class="example-grid-item" data-title="Rot" data-groups={{tags}}>
 						<a class="example-more" href="/examples/{{id}}">
     						<span class="example-text">
     							<h2>{{name}}</h2>
