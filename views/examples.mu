@@ -18,7 +18,7 @@
 			</div>
 
 			<div class="search-tags">
-
+				
 			</div>
 
 			<div class="example">
@@ -32,9 +32,9 @@
     						<span class="example-text">
     							<h2>{{name}}</h2>
     							<hr/>
-    							<p>{{tags}}</p>
+    							<p>{{#tags}}#{{.}} {{/tags}}</p>
     						</span>
-    						<img class="example-img" src="{{preview_img}}" />
+    						<img class="example-img" src="{{preview_image}}" />
     					</a>
   					</div>
 					{{/list}}

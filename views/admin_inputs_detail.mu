@@ -10,7 +10,7 @@
 	<body>
 		<div class="container admin-examples-details">
 			<h1>Add Inputs</h1>
-			{{debug}}
+			<font color="#dd5565">{{debug}}</font>
 			<form class="" action="/admin/inputs/{{data.id}}" method="post">
 				<table>
 					<tr>

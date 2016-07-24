@@ -7,7 +7,7 @@
 		<a href="/lexikon">Lexikon</a>
 	</li>
 	<li class="nav-item">
-		<img src="img/logo.svg" width="80px">
+		<img src="/img/logo.svg" width="80px">
 	</li>
 	<li class="nav-item">
 		<a href="/examples">Beispiele</a>

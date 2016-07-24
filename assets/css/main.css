@@ -224,6 +224,10 @@ h2 {
 	display: none;
 }
 
+.example-text p {
+	padding: 0 10px;
+}
+
 .example-more:hover .example-text {
 	display: flex;
 	flex-direction: column;
@@ -235,6 +239,43 @@ h2 {
 	color: #fff;
 	background-color: rgba(221,85,101,0.8);
 	text-align: center;
+}
+
+.back {
+	position: absolute;
+	padding-top: 6px;
+	left: 100px;
+}
+
+.back a {
+	text-transform: none;
+	border-bottom: none;
+	font-weight: 300;
+}
+
+.back a:hover {
+	text-transform: none;
+	border-bottom: none;
+	font-weight: 300;
+	color: #dd5565;
+}
+
+.video {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+}
+
+.video a {
+	margin-left: 10px;
+	text-transform: none;
+	border-bottom: none;
+	font-weight: 300;
+}
+
+.video a:hover {
+	border-bottom: none;
+	color: #dd5565;
 }
 
 /*.concealed {

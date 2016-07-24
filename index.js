@@ -23,7 +23,7 @@ app.use(function(req, res, next) {
 })
 
 //delete me !
-var examples = [{
+/*var examples = [{
 	id: "270f74c7-0081-434d-9048-e6394af04129",
 	name: "Die Le von Malta",
 	preview_img: "img/example_placeholder.png",
@@ -40,7 +40,7 @@ var examples = [{
     input: [],
     outputs: [],
     tags: '["den", "nis", "tim", "mer", "mann"]'
-}]
+}]*/
 
 // adding template engine
 // app.engine('mu', function(filePath, options, callback) {
@@ -63,7 +63,7 @@ app.get('/lexikon', function (req, res) {
   //
 })
 
-app.get('/examples', function (req, res) {
+/*app.get('/examples', function (req, res) {
     res.locals = {
         test:'hi',
         list: examples
@@ -71,7 +71,7 @@ app.get('/examples', function (req, res) {
     res.render('examples', {
         partials: {'header': 'header'}
     })
-})
+})*/
 
 app.get('/configurator', function (req, res) {
   //
@@ -93,6 +93,7 @@ app.get('/admin', function (req, res) {
 //
 // })
 
+
 //////////////// _________________________________ ADMIN INPUTS
 
 app.route('/admin/inputs')
@@ -104,7 +105,6 @@ app.route('/admin/inputs')
             cursor.toArray(function(err, result) {
                 if(err) return next(err)
 
-                // res.json(result)
                 res.locals = {
                     list: result
                 }
@@ -141,8 +141,6 @@ var inputShowInputDetail = function(req, res, callback) {
 
             requested.selected = []
             requested.selected[requested.type] = true
-
-            // console.log(requested)
 
             callback(requested)
         })
@@ -187,7 +185,7 @@ app.route('/admin/inputs/:id')
             inputShowInputDetail(req, res, function(requested) {
                 res.locals = {
                     data: requested,
-                    debug: JSON.stringify(result)
+                    debug: "Änderungen erfolgreich gespeichert!"
                 }
                 res.render('admin_inputs_detail', {
                 })
@@ -228,7 +226,7 @@ var exampleGetAll = function() {
         res.json(result)
     })
 }
-var exampleShowInputDetail = function(req, res, callback) {
+var exampleShowExampleDetail = function(req, res, callback) {
     r.table('examples').run(req.app._rdbConn, function(err, cursor) {
         if(err) return next(err)
 
@@ -252,13 +250,39 @@ var exampleShowInputDetail = function(req, res, callback) {
         })
     })
 }
-/*var exampleShowInputsTable = function(req, res, callback) {
+var exampleShowInputDetail = function(req, res, callback) {
     r.table('inputs').run(req.app._rdbConn, function(err, cursor) {
-        cursor.toArray(function(err, result) {
-            console.log(results)
+        cursor.toArray(function(err, inputs) {
+            console.log()
         })
     })
-}*/
+}
+var exampleShowExampleDetailPage = function(req, res, callback) {
+    r.table('examples').run(req.app._rdbConn, function(err, cursor) {
+        if(err) return next(err)
+
+        cursor.toArray(function(err, result) {
+            if(err || !result) return next(err)
+
+            requested = _.find(result, { 'id': req.params.id})
+            if(requested == undefined) return next(new Error('id not found'))
+
+            requested.list = _.map(result, function(value, key) {
+                value.checked = _.includes(requested.items, value.id)
+                return value
+            })
+
+            requested.selected = []
+            requested.selected[requested.type] = true
+
+            callback(requested)
+        })
+        /*cursor.toArray(function(err, results) {
+            if(err) return next(err)
+            callback(results)
+        })*/
+    })
+}
 app.route('/admin/examples/add')
     .get(function(req, res, next) {
         var n = {id: uuid.v4()}
@@ -278,6 +302,13 @@ app.route('/admin/examples/add')
     })
 app.route('/admin/examples/:id')
     .get(function(req, res, next) {
+        exampleShowExampleDetail(req, res, function(requested) {
+            res.locals = {
+                data: requested
+            }
+            res.render('admin_examples_detail', {
+            })
+        })
         exampleShowInputDetail(req, res, function(requested) {
             res.locals = {
                 data: requested
@@ -295,10 +326,10 @@ app.route('/admin/examples/:id')
             if(err) return next(err)
 
             // res.json(result.changes[0].new_val);
-            exampleShowInputDetail(req, res, function(requested) {
+            exampleShowExampleDetail(req, res, function(requested) {
                 res.locals = {
                     data: requested,
-                    debug: JSON.stringify(result)
+                    debug: "Änderungen erfolgreich gespeichert!"
                 }
                 res.render('admin_examples_detail', {
                 })
@@ -306,6 +337,40 @@ app.route('/admin/examples/:id')
         });
         // console.log(req.params)
         // res.send(req.params.items)
+    })
+
+//////////////// _________________________________ EXAMPLES
+
+app.route('/examples')
+    .get(function(req, res, next) {
+        console.log('imma here examples')
+        r.table('examples').run(req.app._rdbConn, function(err, cursor) {
+            if(err) return next(err)
+
+            cursor.toArray(function(err, examples) {
+                if(err) return next(err)
+
+                res.locals = {
+                    list: examples
+                }
+                res.render('examples', {
+                    partials: {'header': 'header'}
+                })
+            })
+        })
+    })
+
+app.route('/examples/:id')
+    .get(function(req, res, next) {
+        exampleShowExampleDetailPage(req, res, function(results) {
+            console.log("IMMA HERE EXAMPLE DETAILS")
+            res.locals = {
+                data: results
+            }
+            res.render('examples_detail', {
+                partials: {'header': 'header'}
+            })
+        })
     })
 
 // app.route('/admin/inputs/:id')
