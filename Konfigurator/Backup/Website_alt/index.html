@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang ="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>S Z E N O G R A P H</title>
+		<link href='https://fonts.googleapis.com/css?family=Hind:300,600,700' rel='stylesheet' type='text/css' />
+		<link href="css/main.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="container">
+			<ul class="nav-container">
+				<li class="nav-item">
+					<a href="index.html">Konfigurator</a>
+				</li>
+				<li class="nav-item">
+					<a href="lexikon.html">Lexikon</a>
+				</li>
+				<li class="nav-item">
+					<img src="img/logo.svg" width="80px">
+				</li>
+				<li class="nav-item">
+					<a href="beispiele.html">Beispiele</a>
+				</li>
+				<li class="nav-item">
+					<a href="projekt_infos.html">Projekt Infos</a>
+				</li>
+			</ul>
+		</header>
+
+		<main class="container">
+			<h1 class="inline-block">Konfigurator</h1><div class="info inline-block">i</div>
+			<div class="search">
+				<div class="search-dropdown"> 
+				    <span class="dropdown default">Alle Kategorien</span>
+				    <input type="hidden" value="" class="hidden"/>
+				    <ul class="dropdown-content">
+				        <li>Alle Kategorien</li>
+				        <li>Szenografisches Element</li>
+				        <li>Szenografische Realisation</li>
+				    </ul>
+				</div>
+				<input class="search-input" type="search" id="search" placeholder="Suchen..." />
+				<button class="search-submit"><img class="search-icon" src="img/search.svg"></button>
+			
+			</div class="configurator">
+				<div class="grid_main">
+					<h2>Szenografisches Element</h2>
+					<ul class="input_list">	
+						<li class="i_selectable highlight" id="ee3afb4a-2ad0-4850-b990-d0df6c2b1475">
+							<img class="mini-icon" src="img/icons_min/1.png">Bewegung 
+							<p class="list_tooltip" id="tt1">Bewegung ist die positionelle Veränderung eines Objektes im Raum.</p>
+							<ul id="i_sub0">
+								<li class="i_selectable highlight" id="d34776da-2b13-4a8b-b724-950c38890784">
+									<p class="list_headline">Geschwindigkeit</p>
+									<p class="list_tooltip" id="tt2">Geschwindigkeit beschreibt,</p>
+									<ul id="i_subsub1">
+										<li class="i_selectable" id="906bfc5a-5cbb-4486-b0a0-1abc3603721c">
+											
+											<p class="list_tooltip" id="tt2">Bla bla bla</p>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+				<div class="splitter">
+					
+				</div>
+				
+				<div class="grid_main">
+					<h2>Szenografische Realisation</h2>
+					<ul class="output_list">
+	    			</ul>
+				</div>
+
+				<div class="splitter">
+
+				</div>
+
+				<div class="grid_main">
+					<h2>Beispiele</h2>
+					<div class="example_list">
+						<div class="seletion_input"></div>
+						<div class="seletion_output"></div>
+	    			</div>
+				</div>
+			<div>
+				
+			</div>
+		</main>
+
+		<footer class="container">
+			Impressum
+		</footer>
+
+		<script src="js/jquery-2.2.3.min.js"></script>
+		<script src="js/script.js"></script>
+	</body>
+</html>

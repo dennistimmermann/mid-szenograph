@@ -1,0 +1,47 @@
+function GetAllowedExampleIdsParameter(parameter,list,Pushto)
+{
+	for (var i in exampleList)
+	{
+		for (var j in exampleList[i].parameter)
+		{
+
+			for (var l in list)
+			{
+				if(exampleList[i].parameter[j]==list[l])
+				{
+					Pushto.push(exampleList[i].id)
+				}
+			}			
+		}
+	}
+}
+
+function GetAllowedExampleIds()
+{
+	$( ".selector" ).click(function() 
+	{	
+		allowedExampleIds=[];
+		allowedExampleIdsInput=[];
+		allowedExampleIdsOutput=[];
+		
+		GetAllowedExampleIdsParameter("inputIds",selInputList,allowedExampleIdsInput);
+		GetAllowedExampleIdsParameter("outputIds",selOutputList,allowedExampleIdsOutput);
+		
+
+		for (var i in allowedExampleIdsInput)
+		{
+			for (var j in allowedExampleIdsOutput)
+			{
+				if(allowedExampleIdsInput[i]==allowedExampleIdsInput[j])
+				{
+					allowedExampleIds.push(allowedExampleIdsInput[i])
+				}
+
+			}
+		}
+		
+		console.log(allowedExampleIdsInput);
+		console.log(allowedExampleIdsOutput);
+		console.log(allowedExampleIds);
+    });
+}

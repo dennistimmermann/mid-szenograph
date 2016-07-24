@@ -1,0 +1,124 @@
+[{
+	"id": "ee3afb4a-2ad0-4850-b990-d0df6c2b1475",
+	"name": "Bewegung",
+	"type": "input",
+	"iconpath": "img/icons_min/1.png",
+	"description": "Bewegung ist die positionelle Veränderung eines Objektes im Raum.",
+	"content": "",
+	"tags": [],
+	"examples": [
+		"Springen",
+		"Stehen",
+		"Sitzen",
+		"Winken",
+		"Beugen der Arme",
+		"Beugen der Beine",
+		"Beugen des Oberkörpers",
+		"Beugen des Unterkörpers",
+		"Hüftbewegungen",
+		"Beugen und Strecken aller Fingerglieder",
+		"Synchronisation"
+	],
+	"items": [
+		"d34776da-2b13-4a8b-b724-950c38890784",
+		"xxx",
+		"114776da-2b13-4a8b-b724-950c38890784"
+	]
+}, {
+	"id": "d34776da-2b13-4a8b-b724-950c38890784",
+	"name": "Geschwindigkeit",
+	"type": "attribute",
+	"iconpath": "",
+	"description": "Geschwindigkeit beschreibt, wie schnell ein Objekt oder ein Phänomen über die Zeit seine Position verändert.",
+	"content": "",
+	"tags": ["speed", "v", "velocity", "schnell"],
+	"examples": [],
+	"items": ["906bfc5a-5cbb-4486-b0a0-1abc3603721c",
+		"66919f4f-c89d-4b50-ab25-7b23e3f03ae1"
+	]
+}, {
+	"id": "906bfc5a-5cbb-4486-b0a0-1abc3603721c",
+	"name": "Kamera",
+	"type": "sensor",
+	"iconpath": "",
+	"description": "Bla bla bla",
+	"content": "",
+	"tags": ["video", "auge", "optik", "camera", "cam", "vision"],
+	"examples": [],
+	"items": []
+}, {
+	"id": "66919f4f-c89d-4b50-ab25-7b23e3f03ae1",
+	"name": "Speedometer",
+	"type": "sensor",
+	"iconpath": "",
+	"description": "",
+	"content": "",
+	"tags": ["geschwindigkeit", "speed", "v", "radar", "schnell"],
+	"examples": [],
+	"items": []
+}, {
+	"id": "114776da-2b13-4a8b-b724-950c38890784",
+	"name": "Distance",
+	"type": "attribute",
+	"iconpath": "",
+	"description": "Distance des Fingerglieder fall name Hüftbewegungen",
+	"content": "",
+	"tags": ["speed", "v", "velocity", "schnell"],
+	"examples": [],
+	"items": ["116bfc5a-5cbb-4486-b0a0-1abc3603721c",
+		"11919f4f-c89d-4b50-ab25-7b23e3f03ae1"
+	]
+}, {
+	"id": "116bfc5a-5cbb-4486-b0a0-1abc3603721c",
+	"name": "Entfernung",
+	"type": "sensor",
+	"iconpath": "",
+	"description": "Bla bla bla",
+	"content": "",
+	"tags": ["video", "auge", "optik", "camera", "cam", "vision"],
+	"examples": [],
+	"items": []
+}, {
+	"id": "11919f4f-c89d-4b50-ab25-7b23e3f03ae1",
+	"name": "Laufweite",
+	"type": "sensor",
+	"iconpath": "",
+	"description": "",
+	"content": "",
+	"tags": ["geschwindigkeit", "speed", "v", "radar", "schnell"],
+	"examples": [],
+	"items": []
+}, {
+	"id": "ee3afb4a-0000-4850-0000-d0df6c2b1475",
+	"name": "Audio",
+	"type": "input",
+	"iconpath": "img/icons_min/1.png",
+	"description": "Blödsinn",
+	"content": "",
+	"tags": [],
+	"examples": ["Synchronisation"],
+	"items": [
+		"114776da-2b13-4a8b-0000-950c38890784"
+	]
+},{
+	"id": "114776da-2b13-4a8b-0000-950c38890784",
+	"name": "Schall",
+	"type": "attribute",
+	"iconpath": "",
+	"description": "",
+	"content": "",
+	"tags": ["speed", "v", "velocity", "schnell"],
+	"examples": [],
+	"items": ["116bfc5a-0000-0000-0000-1abc3603721c"
+	]
+}, {
+	"id": "116bfc5a-0000-0000-0000-1abc3603721c",
+	"name": "Schalldruck",
+	"type": "sensor",
+	"iconpath": "",
+	"description": "Bla bla bla",
+	"content": "",
+	"tags": ["video", "auge", "optik", "camera", "cam", "vision"],
+	"examples": [],
+	"items": []
+}]
