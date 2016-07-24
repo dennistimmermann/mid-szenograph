@@ -52,12 +52,19 @@ jQuery(document).ready(function ($) {
 				var tag = $(this).val();
 				tags.push($(this).val());
 				$(this).val('');
+<<<<<<< Updated upstream
 				var img = $("<img/>",{
 							src : "img/close.png"
 							});
 				var button =	$("<button/>",{
 									class : "delete-button"
 								});
+=======
+				$('.search-tags').append("<div class='tag'>" + tag + "<button class='delete-button' type='button'><img src='http://placehold.it/10x10'></button></div>");
+				console.log(tags);
+			}
+		}
+>>>>>>> Stashed changes
 
 				button.on("click", function(){
 					var tag = $(this).parent('div').text().toLowerCase().trim();
@@ -110,4 +117,15 @@ jQuery(document).ready(function ($) {
 		
 	});
 
+	LockForTags();
+
 });
+
+
+function LockForTags()
+{
+
+}
+
+
+
