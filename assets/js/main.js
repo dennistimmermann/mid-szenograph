@@ -28,9 +28,8 @@ jQuery(document).ready(function ($) {
 		itemSelector: '.example-grid-item'
 	});
 
-	$('.example-search-input').bind('keyup', function (evt) {
+	/*$('.example-search-input').bind('keyup', function (evt) {
 		var searchText = evt.target.value.toLowerCase();
-
 		$.each( $('.example-grid-item'), function(index, child) {
 			var titleText = $(this).data('title').toLowerCase().trim();
 			if(titleText.indexOf(searchText) !== -1) {
@@ -41,7 +40,7 @@ jQuery(document).ready(function ($) {
 				$grid.masonry('layout');
 			}
 		});
-	})
+	})*/
 
 	var tags = [];
 
@@ -53,16 +52,62 @@ jQuery(document).ready(function ($) {
 				var tag = $(this).val();
 				tags.push($(this).val());
 				$(this).val('');
-				$('.search-tags').append("<div class='tag'>" + tag + "<button class='delete-button' type='button'><img src='http://placehold.it/10x10'></button></div>");
+				var img = $("<img/>",{
+							src : "img/close.png"
+							});
+				var button =	$("<button/>",{
+									class : "delete-button"
+								});
+
+				button.on("click", function(){
+					var tag = $(this).parent('div').text().toLowerCase().trim();
+					var isInTag = tags[tag];
+					if(isInTag!=='undefined') {
+						$(this).parent().remove();
+						var index = tags.indexOf(tag);
+						tags.splice(index,1);
+						$.each( $('.example-grid-item'), function(index, child) {
+							var obj = $(this);
+							var titleTags = $(this).data('groups');
+							var hasTag = 0;
+							for(var tag in tags){
+								if($.inArray(tags[tag],titleTags) !== -1){
+									hasTag++;
+									console.log("ya");
+								}
+							}
+							if(hasTag == tags.length){
+								obj.show();
+								$grid.masonry('layout');
+							}
+						});
+					}
+					
+				});
+
+				var div = $("<div/>",{
+								class: 'tag',
+								text: tag
+							});
+				
+				img.appendTo(button);
+				button.appendTo(div);
+			
+				$('.search-tags').append(div);
+
+				$.each( $('.example-grid-item'), function(index, child) {
+					var titleTags = $(this).data('groups');
+					var obj = $(this);
+					$.each(tags, function(i,e) {
+					    if ($.inArray(e, titleTags) == -1) {
+					    	$(obj).hide();
+					    	$grid.masonry('layout');
+					    }
+					});
+				});
 			}
 		}
-
-		$('.delete-button').click(function(){
-			var index = $.inArray($(this).parent('div').text(), tags);
-			tags.splice(index);
-			$(this).parent('div').remove();
-    	});
-
+		
 	});
 
 });

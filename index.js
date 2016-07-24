@@ -2,7 +2,6 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var app = express()
 var fs = require('fs')
-var mustache = require('mustache')
 var r = require('rethinkdb')
 var uuid = require('uuid')
 var _ = require('lodash')
@@ -31,7 +30,16 @@ var examples = [{
 	description: "Le Ipsum",
 	input: [],
 	outputs: [],
-	tags: ["le", "van", "tran"]
+	tags: '["le", "van", "ping", "pong"]'
+},
+{
+    id: "270f74c7-0082-434d-9048-e6394af04129",
+    name: "Die Dennis von Malta",
+    preview_img: "img/example_placeholder.png",
+    description: "Dennis Ipsum",
+    input: [],
+    outputs: [],
+    tags: '["den", "nis", "tim", "mer", "mann"]'
 }]
 
 // adding template engine
@@ -76,9 +84,17 @@ app.get('/about', function (req, res) {
     })
 })
 
+app.get('/admin', function (req, res) {
+    res.render('admin', {
+    })
+})
+
 // app.get('/admin/input', function(req, res) {
 //
 // })
+
+//////////////// _________________________________ ADMIN INPUTS
+
 app.route('/admin/inputs')
     .get(function(req, res, next) {
         console.log('imma here')
@@ -96,19 +112,19 @@ app.route('/admin/inputs')
             })
         })
     })
-var getById = function(id) {
+var inputGetById = function(id) {
     r.table('inputs').get(id).run(req.app._rdbConn, function(err, result) {
         if(err) return next(err)
         res.json(result)
     })
 }
-var getAll = function() {
+var inputGetAll = function() {
     r.table('inputs').run(req.app._rdbConn, function(err, cursor) {
         if(err) return next(err)
         res.json(result)
     })
 }
-var showInputDetail = function(req, res, callback) {
+var inputShowInputDetail = function(req, res, callback) {
     r.table('inputs').run(req.app._rdbConn, function(err, cursor) {
         if(err) return next(err)
 
@@ -151,7 +167,7 @@ app.route('/admin/inputs/add')
     })
 app.route('/admin/inputs/:id')
     .get(function(req, res, next) {
-        showInputDetail(req, res, function(requested) {
+        inputShowInputDetail(req, res, function(requested) {
             res.locals = {
                 data: requested
             }
@@ -168,7 +184,7 @@ app.route('/admin/inputs/:id')
             if(err) return next(err)
 
             // res.json(result.changes[0].new_val);
-            showInputDetail(req, res, function(requested) {
+            inputShowInputDetail(req, res, function(requested) {
                 res.locals = {
                     data: requested,
                     debug: JSON.stringify(result)
@@ -181,6 +197,116 @@ app.route('/admin/inputs/:id')
         // res.send(req.params.items)
     })
 
+//////////////// _________________________________ ADMIN EXAMPLES
+
+app.route('/admin/examples')
+    .get(function(req, res, next) {
+        console.log('imma here examples')
+        r.table('examples').run(req.app._rdbConn, function(err, cursor) {
+            if(err) return next(err)
+
+            cursor.toArray(function(err, result) {
+                if(err) return next(err)
+
+                // res.json(result)
+                res.locals = {
+                    list: result
+                }
+                res.render('admin_examples', {})
+            })
+        })
+    })
+var exampleGetById = function(id) {
+    r.table('examples').get(id).run(req.app._rdbConn, function(err, result) {
+        if(err) return next(err)
+        res.json(result)
+    })
+}
+var exampleGetAll = function() {
+    r.table('examples').run(req.app._rdbConn, function(err, cursor) {
+        if(err) return next(err)
+        res.json(result)
+    })
+}
+var exampleShowInputDetail = function(req, res, callback) {
+    r.table('examples').run(req.app._rdbConn, function(err, cursor) {
+        if(err) return next(err)
+
+        cursor.toArray(function(err, result) {
+            if(err || !result) return next(err)
+
+            requested = _.find(result, { 'id': req.params.id})
+            if(requested == undefined) return next(new Error('id not found'))
+
+            requested.list = _.map(result, function(value, key) {
+                value.checked = _.includes(requested.items, value.id)
+                return value
+            })
+
+            requested.selected = []
+            requested.selected[requested.type] = true
+
+            // console.log(requested)
+
+            callback(requested)
+        })
+    })
+}
+/*var exampleShowInputsTable = function(req, res, callback) {
+    r.table('inputs').run(req.app._rdbConn, function(err, cursor) {
+        cursor.toArray(function(err, result) {
+            console.log(results)
+        })
+    })
+}*/
+app.route('/admin/examples/add')
+    .get(function(req, res, next) {
+        var n = {id: uuid.v4()}
+        r.table('examples').insert(n, {returnChanges: true}).run(req.app._rdbConn, function(err, result) {
+            if(err) return next(err)
+            res.redirect(302, '/admin/examples/'+n.id)
+            // res.send('hi')
+            // showInputDetail(req, res, function(requested) {
+            //     res.render('admin_inputs_detail', {
+            //         'view': {
+            //             data: requested,
+            //             debug: JSON.stringify(result.changes[0].new_val)
+            //         }
+            //     })
+            // })
+        })
+    })
+app.route('/admin/examples/:id')
+    .get(function(req, res, next) {
+        exampleShowInputDetail(req, res, function(requested) {
+            res.locals = {
+                data: requested
+            }
+            res.render('admin_examples_detail', {
+            })
+        })
+    })
+    .post(function(req, res, next) {
+        console.log(req.body)
+        req.body.tags = _.trim(req.body.tags, ',').split(',')
+        req.body.examples = _.trim(req.body.examples, ',').split(',')
+        console.log(req.body)
+        r.table('examples').get(req.params.id).update(req.body, {returnChanges: true}).run(req.app._rdbConn, function(err, result) {
+            if(err) return next(err)
+
+            // res.json(result.changes[0].new_val);
+            exampleShowInputDetail(req, res, function(requested) {
+                res.locals = {
+                    data: requested,
+                    debug: JSON.stringify(result)
+                }
+                res.render('admin_examples_detail', {
+                })
+            })
+        });
+        // console.log(req.params)
+        // res.send(req.params.items)
+    })
 
 // app.route('/admin/inputs/:id')
 //     .get()

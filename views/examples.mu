@@ -10,7 +10,6 @@
 
 	<body>
 		{{> header }}
-
 		<main class="container">
 			<h1>Beispiele</h1>
 			<div class="example-search">
@@ -27,112 +26,18 @@
 				<div id="example-grid">
   					<div class="example-grid-sizer"></div>
 					<!--  template item -->
-
 					{{#list}}
-					<div class="example-grid-item" data-title="Rot" data-groups={{tags}}>
+					<div class="example-grid-item" data-title="Rot" data-groups="{{tags}}">
 						<a class="example-more" href="/examples/{{id}}">
     						<span class="example-text">
     							<h2>{{name}}</h2>
     							<hr/>
-    							<p>{{hashtags}}</p>
+    							<p>{{tags}}</p>
     						</span>
     						<img class="example-img" src="{{preview_img}}" />
     					</a>
   					</div>
-
 					{{/list}}
-
-					<!--  !template item -->
-  					<!-- <div class="example-grid-item" data-title="Rot" data-groups='["all", "red"]'>
-    					<a class="example-more" href="beispiele_info.html">
-    						<span class="example-text">
-    							<h2>Lorem Ipsum</h2>
-    							<hr/>
-    							<p>#Bacon #T-Bone #Steak</p>
-    						</span>
-    						<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" />
-    					</a>
-  					</div> -->
-  					<!-- <div class="example-grid-item" data-title="Schnitzel" data-groups='["all", "numbers", "blue", "square"]'>
-  						<a class="example-more" href="beispiele_info.html">
-    						<span class="example-text">
-    							<h2>Lorem Ipsum</h2>
-    							<hr/>
-    							<p>#Bacon #T-Bone #Steak</p>
-    						</span>
-    						<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" />
-    					</a>
-  					</div>
-					<div class="example-grid-item" data-title="Maskenball" data-groups='["all", "green", "blue", "square"]' >
-						<a class="example-more" href="beispiele_info.html">
-    						<span class="example-text">
-    							<h2>Lorem Ipsum</h2>
-    							<hr/>
-    							<p>#Bacon #T-Bone #Steak</p>
-    						</span>
-    						<img class="example-img" src="img/example_placeholder.png" />
-    					</a>
-					</div>
-					<div class="example-grid-item" data-title="Flugzeug" data-groups='["all", "numbers", "blue", "square"]'>
-						<a class="example-more" href="beispiele_info.html">
-    						<span class="example-text">
-    							<h2>Lorem Ipsum</h2>
-    							<hr/>
-    							<p>#Bacon #T-Bone #Steak</p>
-    						</span>
-    						<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg" />
-    					</a>
-					</div>
-					<div class="example-grid-item" data-title="Blase" data-groups='["all", "numbers", "blue", "square"]'>
-						<a class="example-more" href="beispiele_info.html">
-    						<span class="example-text">
-    							<h2>Lorem Ipsum</h2>
-    							<hr/>
-    							<p>#Bacon #T-Bone #Steak</p>
-    						</span>
-    						<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg" />
-    					</a>
-					</div>
-					<div class="example-grid-item" data-title="Ball" data-groups='["all", "numbers", "blue", "square"]'>
-						<a class="example-more" href="beispiele_info.html">
-    						<span class="example-text">
-    							<h2>Lorem Ipsum</h2>
-    							<hr/>
-    							<p>#Bacon #T-Bone #Steak</p>
-    						</span>
-    						<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg" />
-    					</a>
-					</div>
-					<div class="example-grid-item" data-title="Maske">
-						<a class="example-more" href="beispiele_info.html">
-    						<span class="example-text">
-    							<h2>Lorem Ipsum</h2>
-    							<hr/>
-    							<p>#Bacon #T-Bone #Steak</p>
-    						</span>
-    						<img class="example-img" src="img/example_placeholder.png" />
-    					</a>
-					</div>
-					<div class="example-grid-item" data-title="Sport">
-						<a class="example-more" href="beispiele_info.html">
-    						<span class="example-text">
-    							<h2>Lorem Ipsum</h2>
-    							<hr/>
-    							<p>#Bacon #T-Bone #Steak</p>
-    						</span>
-    						<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/golden-hour.jpg" />
-    					</a>
-					</div>
-					<div class="example-grid-item" data-title="Handschuh">
-						<a class="example-more" href="beispiele_info.html">
-    						<span class="example-text">
-    							<h2>Lorem Ipsum</h2>
-    							<hr/>
-    							<p>#Bacon #T-Bone #Steak</p>
-    						</span>
-    						<img class="example-img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" />
-    					</a>
-					</div> -->
 				</div>
 
 			</div>

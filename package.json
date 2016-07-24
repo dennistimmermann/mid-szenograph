@@ -23,6 +23,7 @@
     "lodash": "^4.13.1",
     "mustache": "^2.2.1",
     "nano": "^6.2.0",
-    "rethinkdb": "^2.3.2"
+    "rethinkdb": "^2.3.2",
+    "uuid": "^2.0.2"
   }
 }

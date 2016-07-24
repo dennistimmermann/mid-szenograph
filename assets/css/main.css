@@ -237,8 +237,12 @@ h2 {
 	text-align: center;
 }
 
-.concealed {
+/*.concealed {
 	display: none;
+}*/
+
+.found {
+	display: block;
 }
 
 .project {
@@ -294,4 +298,94 @@ footer {
 	clear: both;
 	margin: 80px 0 20px 0;
 	text-align: center;
+}
+
+/* _____________ ADMIN */
+
+.admin-examples {
+	margin: 50px;
+}
+
+.admin-examples table {
+	border-collapse: collapse;
+}
+
+.admin-examples table td {
+	border-bottom: 1px solid #333;
+}
+
+.admin-examples table tr td {
+	padding: 10px 30px 10px 0px;
+}
+
+.admin-examples textarea {
+    border: 1px solid #333;
+    background-color: #ebebeb;
+    min-width: 250px;
+    min-height: 50px;
+}
+
+.admin-examples-details input {
+	min-width: 400px;
+    height: 25px;
+    border: 1px solid #333;
+    background: #ebebeb;
+}
+
+.admin-examples-details {
+	margin: 50px;
+}
+
+.admin-examples-details table tr td {
+	padding: 10px 20px 10px 0px;
+}
+
+.admin-examples-details textarea {
+    border: 1px solid #333;
+    background-color: #ebebeb;
+    min-width: 400px;
+    min-height: 50px;
+}
+
+.admin-examples-details input {
+	min-width: 400px;
+    height: 25px;
+    border: 1px solid #333;
+    background: #ebebeb;
+}
+
+.admin-examples-details select {
+	border: 1px solid #333;
+    background: #ebebeb;
+    width: 150px;
+}
+
+.save-add-examples, .add-examples {
+	padding: 5px 20px;
+	margin-right: 15px;
+    border: 1px solid #333;
+    background: #ebebeb;
+    font-family: 'Hind', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    margin-top: 20px;
+    text-transform: none;
+}
+
+.add-examples:hover {
+	border: 1px solid #333;
+	color: #dd5565;
+}
+
+.box {
+	height: 100px;
+    min-width: 400px;
+    padding-right: 30px;
+    overflow-y: scroll;
+    border: 1px solid #333;
+}
+
+.box input {
+	width: 20px;
+	height: 14px;
 }

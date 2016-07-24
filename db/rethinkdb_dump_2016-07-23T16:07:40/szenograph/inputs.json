@@ -1,0 +1,7 @@
+[
+{"description": "", "tags": [""], "content": "", "examples": [""], "type": "attribute", "id": "4b2334df-4121-47ca-9b92-3d10c095b1b2", "name": ""},
+{"description": "", "tags": ["geschwindigkeit", "speed", "v", "radar", "schnell"], "items": [], "content": "", "examples": [], "type": "attribute", "id": "66919f4f-c89d-4b50-ab25-7b23e3f03ae1", "name": "Speedometer"},
+{"description": "", "tags": ["video", "auge", "optik", "camera", "cam", "vision"], "items": [], "content": "", "examples": [], "type": "sensor", "id": "906bfc5a-5cbb-4486-b0a0-1abc3603721c", "name": "Kamera"},
+{"description": "Geschwindigkeit beschreibt, wie schnell ein Objekt oder ein Ph\u00e4nomen \u00fcber die Zeit seine Position ver\u00e4ndert.", "tags": ["speed", "v", "velocity", "schnell"], "items": ["66919f4f-c89d-4b50-ab25-7b23e3f03ae1", "906bfc5a-5cbb-4486-b0a0-1abc3603721c"], "content": "", "examples": [""], "type": "attribute", "id": "d34776da-2b13-4a8b-b724-950c38890784", "name": "Geschwindigkeiten"},
+{"description": "Bewegung ist die positionelle Ver\u00e4nderung eines Objektes im Raum.", "tags": [], "items": ["d34776da-2b13-4a8b-b724-950c38890784"], "content": "", "examples": ["Springen", "Stehen", "Sitzen", "Winken", "Beugen der Arme", "Beugen der Beine", "Beugen des Oberk\u00f6rpers", "Beugen des Unterk\u00f6rpers", "H\u00fcftbewegungen", "Beugen und Strecken aller Fingerglieder", "Synchronisation"], "icon": "http://jdhjhjdfhgjdjfhgj.de", "type": "input", "id": "ee3afb4a-2ad0-4850-b990-d0df6c2b1475", "name": "Bewegung"}
+]
