@@ -80,7 +80,14 @@ app.get('/configurator', function (req, res) {
 app.get('/about', function (req, res) {
     // res.send('Hello About!');
     res.render('about', {
-        partials: {'header': 'header'}
+        partials: {'header': 'header', 'footer': 'footer'}
+    })
+})
+
+app.get('/impressum', function (req, res) {
+    // res.send('Hello About!');
+    res.render('impressum', {
+        partials: {'header': 'header', 'footer': 'footer'}
     })
 })
 
@@ -354,7 +361,7 @@ app.route('/examples')
                     list: examples
                 }
                 res.render('examples', {
-                    partials: {'header': 'header'}
+                    partials: {'header': 'header', 'footer': 'footer'}
                 })
             })
         })
@@ -368,7 +375,7 @@ app.route('/examples/:id')
                 data: results
             }
             res.render('examples_detail', {
-                partials: {'header': 'header'}
+                partials: {'header': 'header', 'footer': 'footer'}
             })
         })
     })

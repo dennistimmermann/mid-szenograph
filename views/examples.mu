@@ -43,9 +43,7 @@
 			</div>
 		</main>
 
-		<footer class="container">
-			Impressum
-		</footer>
+		{{> footer }}
 
 		<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
 		<script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>

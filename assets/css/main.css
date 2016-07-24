@@ -300,12 +300,55 @@ h2 {
 	width: 30%;
 }
 
+.portfolio {
+	margin: 30px 0;
+	display: flex;
+	flex-direction: row;
+
+}
+
 .person-image {
 	width: 90px;
     height: 90px;
     border-radius: 90px;
+    margin-right: 20px;
     text-align: center;
-    background-image: url('../img/img-placeholder.png');
+}
+
+.nik {
+	background-image: url('../img/niklas.jpg');
+}
+
+.dennis {
+	background-image: url('../img/dennis.jpg');
+}
+
+.lea {
+	background-image: url('../img/lea.jpg');
+}
+
+.le {
+	background-image: url('../img/le.jpg');
+}
+
+.denise {
+	background-image: url('../img/denise.jpg');
+}
+
+.carsten {
+	background-image: url('../img/carsten.jpg');
+}
+
+.sven {
+	background-image: url('../img/sven.jpg');
+}
+
+.sascha {
+	background-image: url('../img/sascha.jpg');
+}
+
+.hannes {
+	background-image: url('../img/hannes.jpg');
 }
 
 .portfolio-link {
@@ -313,12 +356,16 @@ h2 {
     height: 90px;
     border-radius: 90px;
     text-align: center;
-    background-color: rgba(221,85,101,0.3);
+    background-color: rgba(221,85,101,0.6);
     display: table-cell;
     overflow: hidden;
     vertical-align:middle;
     visibility: hidden;
   	opacity: 0;
+}
+
+.portfolio-link a {
+	color: #fff;
 }
 
 .person-image:hover .portfolio-link {
@@ -335,10 +382,41 @@ h2 {
 	border-bottom: none;
 }
 
-footer {
+.footer {
 	clear: both;
-	margin: 80px 0 20px 0;
+	margin: 50px 0;
 	text-align: center;
+}
+
+.footer a {
+	text-transform: none;
+	font-weight: 300;
+	border-bottom: none;
+}
+
+.footer a:hover {
+	text-transform: none;
+	font-weight: 300;
+	border-bottom: none;
+	color: #dd5565;
+}
+
+.impressum-parts {
+	display: flex;
+	flex-direction: row;
+}
+
+.part1 {
+	width: 22%;
+}
+
+.part2 {
+	width: 22%;
+	padding-right: 25px;
+}
+
+.part3 {
+	width: 50%;
 }
 
 /* _____________ ADMIN */

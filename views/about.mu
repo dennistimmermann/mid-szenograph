@@ -17,8 +17,16 @@
 				Die Idee einer interaktiven Dienstleistungsplattform für Betreiber von Theaterhäusern sowie Betrieben die sich mit der Aufführung von Schauspiel beschäftigen. Darunter fallen auch Musicals-, Opern- und Tanzaufführungen. Der Kern der Geschäftsidee ist den Verantwortlichen in den Häusern eine Möglichkeit zu geben interaktive Elemente in Ihre Aufführungen einzubauen. Im Vorfeld erstellt der Regisseur wie gewohnt sein Schauspiel welches im Drehbuch in verschiedene Szenen eingeteilt wird. In diesem Arbeitsschritt hat er die Möglichkeit unsere Webseite(URL FOLGT)einzubeziehen. Zunächst wählt er auf der Webseite aus ob er sich nur von anderen Beispielen Inspirieren lassen möchte oder ob er schon eine Vorstellung davon hat welche szenographischen Elemente er einsetzt.
 			</p>
 
-			<div>
-				<div class="person-image"><div class="portfolio-link"><a href="#">Niklas<br/> Thyen</a></div></div>
+			<div class="portfolio">
+				<div class="person-image nik"><div class="portfolio-link"><a href="#">Niklas<br/> Thyen</a></div></div>
+				<div class="person-image dennis"><div class="portfolio-link"><a href="#">Dennis<br/> Timmermann</a></div></div>
+				<div class="person-image lea"><div class="portfolio-link"><a href="#">Lea<br/> Ahlers</a></div></div>
+				<div class="person-image le"><div class="portfolio-link"><a href="#">Le<br/> Tran</a></div></div>
+				<div class="person-image denise"><div class="portfolio-link"><a href="#">Denise<br/> Bile</a></div></div>
+				<div class="person-image carsten"><div class="portfolio-link"><a href="#">Carsten<br/> Greif</a></div></div>
+				<div class="person-image sven"><div class="portfolio-link"><a href="#">Sven<br/> Corbach</a></div></div>
+				<div class="person-image hannes"><div class="portfolio-link"><a href="#">Hannes<br/> Nehls</a></div></div>
+				<div class="person-image sascha"><div class="portfolio-link"><a href="#">Sascha<br/> Wienhausen</a></div></div>
 			</div>
 
 			<p>
@@ -26,11 +34,8 @@
 			</p>
 		</main>
 
-		<footer class="container">
-			Impressum
-		</footer>
+		{{> footer }}
 
 		<script src="js/jquery-2.2.3.min.js"></script>
-		<script src="js/main.js"></script>
 	</body>
 </html>
