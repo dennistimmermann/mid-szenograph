@@ -315,28 +315,28 @@ app.route('/admin/examples')
             })
         })
     })
-var exampleShowExampleDetail = function(req, res, callback) {
-    r.table('examples').run(req.app._rdbConn, function(err, cursor) {
-        if(err) return next(err)
-
-        cursor.toArray(function(err, result) {
-            if(err || !result) return next(err)
-
-            requested = _.find(result, { 'id': req.params.id})
-            if(requested == undefined) return next(new Error('id not found'))
-
-            requested.list = _.map(result, function(value, key) {
-                value.checked = _.includes(requested.items, value.id)
-                return value
-            })
-
-            requested.selected = []
-            requested.selected[requested.type] = true
-
-            callback(requested)
-        })
-    })
-}
+// var exampleShowExampleDetail = function(req, res, callback) {
+//     r.table('examples').run(req.app._rdbConn, function(err, cursor) {
+//         if(err) return next(err)
+//
+//         cursor.toArray(function(err, result) {
+//             if(err || !result) return next(err)
+//
+//             requested = _.find(result, { 'id': req.params.id})
+//             if(requested == undefined) return next(new Error('id not found'))
+//
+//             requested.list = _.map(result, function(value, key) {
+//                 value.checked = _.includes(requested.items, value.id)
+//                 return value
+//             })
+//
+//             requested.selected = []
+//             requested.selected[requested.type] = true
+//
+//             callback(requested)
+//         })
+//     })
+// }
 /*var exampleShowExampleDetail = function(req, res, callback) {
     r.table('examples').run(req.app._rdbConn, function(err, cursor) {
         if(err) return next(err)
@@ -359,7 +359,31 @@ var exampleShowExampleDetail = function(req, res, callback) {
         })
     })
 }*/
-var exampleShowExampleDetailPage = function(req, res, callback) {
+
+// var outputShowOutputDetail = function(req, res, callback) {
+//     r.table('outputs').run(req.app._rdbConn, function(err, cursor) {
+//         if(err) return next(err)
+//
+//         cursor.toArray(function(err, result) {
+//             if(err || !result) return next(err)
+//
+//             requested = _.find(result, { 'id': req.params.id})
+//             if(requested == undefined) return next(new Error('id not found'))
+//
+//             requested.list = _.map(result, function(value, key) {
+//                 value.checked = _.includes(requested.items, value.id)
+//                 return value
+//             })
+//
+//             requested.selected = []
+//             requested.selected[requested.type] = true
+//
+//             callback(requested)
+//         })
+//     })
+// }
+
+var exampleShowExampleDetail = function(req, res, callback) {
     r.table('examples').run(req.app._rdbConn, function(err, cursor) {
         if(err) return next(err)
 
@@ -372,7 +396,39 @@ var exampleShowExampleDetailPage = function(req, res, callback) {
             requested.selected = []
             requested.selected[requested.type] = true
 
-            callback(requested)
+            r.table('inputs').run(req.app._rdbConn, function(err, cursor) {
+                if(err) return next(err)
+
+                // console.log("törö")
+
+                cursor.toArray(function(err, inputs) {
+                    if(err) return next(err)
+
+                    requested.inputlist = _.map(inputs, function(value, key) {
+                        value.checked = _.includes(requested.inputs, value.id)
+                        return value
+                    })
+
+                    r.table('outputs').run(req.app._rdbConn, function(err, cursor) {
+                        if(err) return next(err)
+
+                        cursor.toArray(function(err, outputs) {
+
+                            requested.outputlist = _.map(outputs, function(value, key) {
+                                value.checked = _.includes(requested.outputs, value.id)
+                                return value
+                            })
+
+                            if(err) return next(err)
+
+                            // requested.inputlist = inputs
+                            // requested.outputlist = outputs
+
+                            callback(requested)
+                        })
+                    })
+                })
+            })
         })
     })
 }
@@ -388,34 +444,21 @@ app.route('/admin/examples/:id')
     .get(function(req, res, next) {
         exampleShowExampleDetail(req, res, function(requested) {
 
-            r.table('inputs').run(req.app._rdbConn, function(err, cursor) {
-                if(err) return next(err)
+            res.locals = {
+                data: requested,
+                inputlist: requested.inputlist,
+                outputlist: requested.outputlist
+            }
+            // console.log(requested)
+            res.render('admin_examples_detail', {
 
-                cursor.toArray(function(err, inputs) {
-                    if(err) return next(err)
-
-                    r.table('outputs').run(req.app._rdbConn, function(err, cursor) {
-                        if(err) return next(err)
-
-                        cursor.toArray(function(err, outputs) {
-                            if(err) return next(err)
-
-                            res.locals = {
-                                data: requested,
-                                inputlist: inputs,
-                                outputlist: outputs
-                            }
-                            res.render('admin_examples_detail', {
-
-                            })
-                        })
-                    })
-                })
             })
         })
     })
     .post(function(req, res, next) {
         console.log(req.body)
+        req.body.inputs = req.body.inputs || []
+        req.body.outputs = req.body.outputs || []
         req.body.tags = _.trim(req.body.tags, ',').split(',')
         req.body.examples = _.trim(req.body.examples, ',').split(',')
         console.log(req.body)
@@ -425,7 +468,9 @@ app.route('/admin/examples/:id')
             exampleShowExampleDetail(req, res, function(requested) {
                 res.locals = {
                     data: requested,
-                    debug: JSON.stringify(req.body)
+                    inputlist: requested.inputlist,
+                    outputlist: requested.outputlist,
+                    debug: "Änderungen erfolgreich gespeichert!"
                 }
                 res.render('admin_examples_detail', {
                 })
