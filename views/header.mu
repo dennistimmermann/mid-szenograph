@@ -1,7 +1,7 @@
 <header class="container">
 <ul class="nav-container">
 	<li class="nav-item">
-		<a href="/">Konfigurator</a>
+		<a href="/configurator">Konfigurator</a>
 	</li>
 	<li class="nav-item">
 		<a href="/lexikon">Lexikon</a>

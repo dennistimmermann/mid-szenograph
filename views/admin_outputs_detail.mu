@@ -23,7 +23,7 @@
 					</tr>
 					<tr>
 						<td><b>Icon</b></td>
-						<td><input type="text" name="icon" value="{{data.icon}}"></td>
+						<td><input type="text" name="iconpath" value="{{data.iconpath}}"></td>
 						<td>Icon als Pfad (Ordner/Bezeichnung.Endung)</td>
 					</tr>
 					<tr>
@@ -44,7 +44,7 @@
 						<td><i>Rot,Grün,Blau,Gelb</i></td>
 					</tr>
 					<tr>
-						<td style="vertical-align:top"><b>Untergeordnete <br>Elemente</b></td>
+						<td style="vertical-align:top"><b>Untergeordnete <br>Realisationen</b></td>
 						<td>
 							<div class="box">
 								{{#data.list}}

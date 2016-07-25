@@ -11,7 +11,7 @@
 	<body>
 		{{> header }}
 		<main class="container">
-			<span class="back"><a href="/examples">zurück</a></span><h1>Beispiele</h1>
+			<span class="back"><a href="#" onClick="history.go(-1)">zurück</a></span><h1>Beispiele</h1>
 			{{debug}}
 			<div class="project">
 				<h2>{{data.name}}</h2>

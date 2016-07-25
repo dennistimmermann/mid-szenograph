@@ -23,7 +23,7 @@
 					</tr>
 					<tr>
 						<td><b>Icon</b></td>
-						<td><input type="text" name="icon" value="{{data.icon}}"></td>
+						<td><input type="text" name="iconpath" value="{{data.iconpath}}"></td>
 						<td>Icon als Pfad (Ordner/Bezeichnung.Endung)</td>
 					</tr>
 					<tr>
@@ -38,10 +38,6 @@
 					<tr>
 						<td style="vertical-align:top"><b>Beschreibung</b></td>
 						<td><textarea name="description">{{data.description}}</textarea></td>
-					</tr>
-					<tr>
-						<td style="vertical-align:top"><b>Inhalt</b></td>
-						<td><textarea name="content">{{data.content}}</textarea></td>
 					</tr>
 					<tr>
 						<td><b>Tags</b></td>

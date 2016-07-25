@@ -44,19 +44,19 @@
 						<td style="vertical-align:top"><b>Szenografisches </br>Element</b></td>
 						<td>
 							<div class="box">
-								{{#data.list}}
-									<input type="checkbox" name="inputs[]" value="{{id}}" {{#checked}}checked{{/checked}}>{{name}} - {{id}}<br>
-								{{/data.list}}
+								{{#inputlist}}
+									<input type="checkbox" name="inputs[]" value="{{id}}" {{#checked}}checked{{/checked}}><b>{{name}}</b> - Typ: {{type}}<br>
+								{{/inputlist}}
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td><b>Szenografische </br>Realisation</b></td>
+						<td style="vertical-align:top"><b>Szenografische </br>Realisation</b></td>
 						<td>
 							<div class="box">
-								{{#data.inputlist}}
-									<input type="checkbox" name="inputs" value="{{id}}" {{#checked}}checked{{/checked}}>{{name}} - {{id}}<br>
-								{{/data.inputlist}}
+								{{#outputlist}}
+									<input type="checkbox" name="outputs[]" value="{{id}}" {{#checked}}checked{{/checked}}><b>{{name}}</b> - Typ: {{type}}<br>
+								{{/outputlist}}
 							</div>
 						</td>
 					</tr>
