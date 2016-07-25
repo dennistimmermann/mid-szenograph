@@ -38,7 +38,7 @@
 					<tr>
 						<td><b>Tags</b></td>
 						<td><input type="text" name="tags" value="{{#data.tags}}{{.}},{{/data.tags}}"></td>
-						<td><i>(Rot,Grün,Blau,Gelb)</i></td>
+						<td><i>Rot,Grün,Blau,Gelb</i></td>
 					</tr>
 					<tr>
 						<td style="vertical-align:top"><b>Szenografisches </br>Element</b></td>
@@ -64,6 +64,7 @@
 				<a class="add-examples" href="/admin/examples">Zurück</a>
 				<button class="save-add-examples" type="submit" value="save">Speichern</button>
 			</form>
+			<div class="admin-logo"><img src="/img/admin-logo.png"></div>
 		</div>
 	</body>
 </html>

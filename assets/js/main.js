@@ -50,7 +50,7 @@ jQuery(document).ready(function ($) {
 				$(this).val('');
 			} else {
 				var tag = $(this).val();
-				tags.push($(this).val());
+				tags.push($(this).val().toLowerCase());
 				$(this).val('');
 				var img = $("<img/>",{
 							src : "img/close.png"
@@ -68,7 +68,7 @@ jQuery(document).ready(function ($) {
 						tags.splice(index,1);
 						$.each( $('.example-grid-item'), function(index, child) {
 							var obj = $(this);
-							var titleTags = $(this).data('groups').split(',');
+							var titleTags = $(this).data('groups').toString().toLowerCase().split(',');
 							var hasTag = 0;
 							for(var tag in tags){
 								if($.inArray(tags[tag],titleTags) !== -1){
@@ -96,7 +96,7 @@ jQuery(document).ready(function ($) {
 				$('.search-tags').append(div);
 
 				$.each( $('.example-grid-item'), function(index, child) {
-					var titleTags = $(this).data('groups').split(',');
+					var titleTags = $(this).data('groups').toString().toLowerCase().split(',');
 					var obj = $(this);
 					$.each(tags, function(i,e) {
 					    if ($.inArray(e, titleTags) == -1) {

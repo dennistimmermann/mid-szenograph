@@ -9,7 +9,7 @@
 
 	<body>
 		<div class="container admin-examples">
-			<h1>Examples</h1>
+			<h1>Beispiele</h1>
 			<table>
 				<tr>
 					<td>
@@ -19,7 +19,7 @@
 						<b>ID</b>
 					</td>
 					<td>
-						<b>Delete</b>
+						<b>Löschen</b>
 					</td>
 				</tr>
 				{{#list}}
@@ -37,8 +37,9 @@
 				{{/list}}
 			</table>
 			<br><br>
-			<a class="add-examples" href="/admin">Back</a>
-			<a class="add-examples" href="/admin/examples/add">Add new example</a>
+			<a class="add-examples" href="/admin">Zurück</a>
+			<a class="add-examples" href="/admin/examples/add">Neues Beispiel hinzufügen</a>
 		</div>
+		<div class="admin-logo"><img src="/img/admin-logo.png"></div>
 	</body>
 </html>

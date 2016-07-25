@@ -32,14 +32,12 @@
 					{{data.description}}
 				</p>
 			</div>
-			<div class="more">
+			<!--<div class="more">
+				{{#list}}
 				<h2>Ähnliche Stücke</h2>
-				<a href="#"><img src="http://placehold.it/180x110"></a>
-				<a href="#"><img src="http://placehold.it/180x110"></a>
-				<a href="#"><img src="http://placehold.it/180x110"></a>
-				<a href="#"><img src="http://placehold.it/180x110"></a>
-				<a href="#"><img src="http://placehold.it/180x110"></a>
-			</div>
+				<a href="#"><img src="{{preview_image}}"></a>
+				{{/list}}
+			</div>-->
 		</main>
 
 		{{> footer }}

@@ -63,16 +63,6 @@ app.get('/lexikon', function (req, res) {
   //
 })
 
-/*app.get('/examples', function (req, res) {
-    res.locals = {
-        test:'hi',
-        list: examples
-    }
-    res.render('examples', {
-        partials: {'header': 'header'}
-    })
-})*/
-
 app.get('/configurator', function (req, res) {
   //
 })
@@ -95,11 +85,6 @@ app.get('/admin', function (req, res) {
     res.render('admin', {
     })
 })
-
-// app.get('/admin/input', function(req, res) {
-//
-// })
-
 
 //////////////// _________________________________ ADMIN INPUTS
 
@@ -202,6 +187,107 @@ app.route('/admin/inputs/:id')
         // res.send(req.params.items)
     })
 
+//////////////// _________________________________ ADMIN OUTPUT
+
+app.route('/admin/outputs')
+    .get(function(req, res, next) {
+        console.log('imma here')
+        r.table('outputs').run(req.app._rdbConn, function(err, cursor) {
+            if(err) return next(err)
+
+            cursor.toArray(function(err, result) {
+                if(err) return next(err)
+
+                res.locals = {
+                    list: result
+                }
+                res.render('admin_outputs', {})
+            })
+        })
+    })
+var outputGetById = function(id) {
+    r.table('outputs').get(id).run(req.app._rdbConn, function(err, result) {
+        if(err) return next(err)
+        res.json(result)
+    })
+}
+var outputGetAll = function() {
+    r.table('outputs').run(req.app._rdbConn, function(err, cursor) {
+        if(err) return next(err)
+        res.json(result)
+    })
+}
+var outputShowOutputDetail = function(req, res, callback) {
+    r.table('outputs').run(req.app._rdbConn, function(err, cursor) {
+        if(err) return next(err)
+
+        cursor.toArray(function(err, result) {
+            if(err || !result) return next(err)
+
+            requested = _.find(result, { 'id': req.params.id})
+            if(requested == undefined) return next(new Error('id not found'))
+
+            requested.list = _.map(result, function(value, key) {
+                value.checked = _.includes(requested.items, value.id)
+                return value
+            })
+
+            requested.selected = []
+            requested.selected[requested.type] = true
+
+            callback(requested)
+        })
+    })
+}
+app.route('/admin/outputs/add')
+    .get(function(req, res, next) {
+        var n = {id: uuid.v4()}
+        r.table('outputs').insert(n, {returnChanges: true}).run(req.app._rdbConn, function(err, result) {
+            if(err) return next(err)
+            res.redirect(302, '/admin/outputs/'+n.id)
+            // res.send('hi')
+            // showInputDetail(req, res, function(requested) {
+            //     res.render('admin_inputs_detail', {
+            //         'view': {
+            //             data: requested,
+            //             debug: JSON.stringify(result.changes[0].new_val)
+            //         }
+            //     })
+            // })
+        })
+    })
+app.route('/admin/outputs/:id')
+    .get(function(req, res, next) {
+        outputShowOutputDetail(req, res, function(requested) {
+            res.locals = {
+                data: requested
+            }
+            res.render('admin_outputs_detail', {
+            })
+        })
+    })
+    .post(function(req, res, next) {
+        console.log(req.body)
+        req.body.tags = _.trim(req.body.tags, ',').split(',')
+        req.body.examples = _.trim(req.body.examples, ',').split(',')
+        console.log(req.body)
+        r.table('outputs').get(req.params.id).update(req.body, {returnChanges: true}).run(req.app._rdbConn, function(err, result) {
+            if(err) return next(err)
+
+            // res.json(result.changes[0].new_val);
+            outputShowOutputDetail(req, res, function(requested) {
+                res.locals = {
+                    data: requested,
+                    debug: "Änderungen erfolgreich gespeichert!"
+                }
+                res.render('admin_outputs_detail', {
+                })
+            })
+        });
+        // console.log(req.params)
+        // res.send(req.params.items)
+    })
+
 //////////////// _________________________________ ADMIN EXAMPLES
 
 app.route('/admin/examples')
@@ -213,9 +299,26 @@ app.route('/admin/examples')
             cursor.toArray(function(err, result) {
                 if(err) return next(err)
 
+                /*r.table('inputs').run(req.app._rdbConn, function(err, cursor) {
+                    if(err) return next(err)
+                    var inputs = inputs
+
+                    cursor.toArray(function(err, inputs) {
+                        if(err) return next(err)
+
+                        res.send(inputs)
+                    })
+
+                    console.log(inputs)
+
+                })
+
+                console.log(result)*/
+                //console.log(inputs)
                 // res.json(result)
                 res.locals = {
                     list: result
+                    //list: inputs
                 }
                 res.render('admin_examples', {})
             })
@@ -254,13 +357,6 @@ var exampleShowExampleDetail = function(req, res, callback) {
             // console.log(requested)
 
             callback(requested)
-        })
-    })
-}
-var exampleShowInputDetail = function(req, res, callback) {
-    r.table('inputs').run(req.app._rdbConn, function(err, cursor) {
-        cursor.toArray(function(err, inputs) {
-            console.log()
         })
     })
 }
@@ -316,13 +412,6 @@ app.route('/admin/examples/:id')
             res.render('admin_examples_detail', {
             })
         })
-        exampleShowInputDetail(req, res, function(requested) {
-            res.locals = {
-                data: requested
-            }
-            res.render('admin_examples_detail', {
-            })
-        })
     })
     .post(function(req, res, next) {
         console.log(req.body)
@@ -370,7 +459,6 @@ app.route('/examples')
 app.route('/examples/:id')
     .get(function(req, res, next) {
         exampleShowExampleDetailPage(req, res, function(results) {
-            console.log("IMMA HERE EXAMPLE DETAILS")
             res.locals = {
                 data: results
             }

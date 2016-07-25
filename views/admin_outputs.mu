@@ -9,7 +9,7 @@
 
 	<body>
 		<div class="container admin-examples">
-			<h1>Szenografische Elemente</h1>
+			<h1>Szenografische Realisation</h1>
 			<table>
 				<tr>
 					<td>
@@ -28,7 +28,7 @@
 				{{#list}}
 					<tr>
 						<td>
-							<a href="/admin/inputs/{{id}}">{{name}}</a>
+							<a href="/admin/outputs/{{id}}">{{name}}</a>
 						</td>
 						<td>
 							{{type}}
@@ -37,14 +37,14 @@
 							{{id}}
 						</td>
 						<td align="center">
-							<a href="/admin/inputs/{{id}}/delete"><img src="/img/close.png"></a>
+							<a href="/admin/outputs/{{id}}/delete"><img src="/img/close.png"></a>
 						</td>
 					</tr>
 				{{/list}}
 			</table>
 			<br><br>
 			<a class="add-examples" href="/admin">Zurück</a>
-			<a class="add-examples" href="/admin/inputs/add">Szenografisches Element hinzufügen</a>
+			<a class="add-examples" href="/admin/outputs/add">Szenografische Realisation hinzufügen</a>
 			<div class="admin-logo"><img src="/img/admin-logo.png"></div>
 		</div>
 	</body>
