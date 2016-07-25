@@ -110,7 +110,7 @@ var inputList=
 	"content": "",
 	"tags": ["speed", "v", "velocity", "schnell"],
 	"examples": [],
-	"items": ["10", "11"
+	"items": ["10", "30"
 	]
 }, {
 	"id": "10",
@@ -123,7 +123,7 @@ var inputList=
 	"examples": [],
 	"items": []
 } , {
-	"id": "11",
+	"id": "30",
 	"name": "Penisbär",
 	"type": "sensor",
 	"iconpath": "",
@@ -280,14 +280,38 @@ $( document ).ready(function()
 {
 	createList(inputList,"input","#inputList-container");
 	createList(outputList,"output","#outputList-container");
+
 	idSelection();
 	drawExampleList();
+	//myHide("#inputList-container");
+	searchList();
+
 });
+
+function searchList()
+{
+	$('.search-input').bind('keyup', function (evt) 
+	{
+		var searchText = evt.target.value.toLowerCase();
+
+		console.log(searchText);
+		/*
+		$.each( $('.example-grid-item'), function(index, child) {
+			var titleText = $(this).data('title').toLowerCase().trim();
+			if(titleText.indexOf(searchText) !== -1) {
+				$(this).show();
+				$grid.masonry('layout');
+			} else {
+				$(this).hide();
+				$grid.masonry('layout');
+			}
+		});*/
+	})
+}
 
 function drawExampleList()
 {
 	filterExampleList();
-	console.log(filteredExampleList);
 	if(filteredExampleList.length>0)
 	{
 		createExampleList(filteredExampleList,"#exampleList-container");
@@ -297,8 +321,6 @@ function drawExampleList()
 		$("#exampleList-container").empty();
 		$("#exampleList-container").append("<div class="+"example"+" ><img src="+"img/Example_img/img-test.png"+"><h4>Keine Ergebinsse</h4><p class="+"infotext"+">Leider konnten keine Ergebinsse gefunden werden.<br>Probiere es mit anderen Suchbegriffen erneut.</p></div>");
 	}
-	console.log(filteredExampleList);
-
 }
 
 function createExampleList(arr,appendTo)
@@ -338,50 +360,58 @@ function filterList(selList,attribute)
 	}
 
 	return filteredExampleList
-	
 }
-
-window.fl = filterList
-
-/*function filterList(selList,inputs)
-{
-	selList.forEach(function(e,i,arr)
-	{
-		filteredExampleList=
-		filteredExampleList.
-
-		filter(function(f,i,arr)
-		{
-			var inList = false;
-			f[inputs].forEach(function(g,i,arr)
-			{
-				if(g==e)
-				{
-					inList=true;
-				}
-			})
-			return inList;
-		})
-	})
-}*/
-
-
 
 function idSelection()
 {
 	getId("#inputList-container",selInputList,".seletion_input");
 	getId("#outputList-container",selOutputList,".seletion_output");
+
+	highlight("#inputList-container",selInputList);
+	highlight("#outputList-container",selOutputList);
 }
 
+/*function myHide(mainDiv)
+{
+	$( ""+mainDiv+" li .selector" ).each(function( index ) 
+	{
+		var currentLevel = $(this).closest('ul')
+		$("li p", currentLevel).slideUp(1);
+		$("li ul", currentLevel).slideUp(1);
+	});
+}
 
+function myopen()
+{
+	var newThis = $(this).parent();
+
+	$("li p", currentLevel).slideUp(1);
+
+
+
+	//.SlideUp(100)
+}*/
+
+
+function highlight(mainDiv,arr)
+{
+	$( ""+mainDiv+" .selector" ).each(function( index ) 
+	{
+		if($.inArray($(this).parent().data("id"),arr)== -1)
+		{
+			$(this).removeClass("highlight");
+		}
+		else
+		{
+			$(this).addClass("highlight");
+		}
+	});
+}
 
 function getId(mainDiv,arr,addTo)
 { 
 	$(mainDiv).on("click",".selector", function(event) 
 	{	
-
-		$( this ).toggleClass( "highlight" );
-
 		if($.inArray($(this).parent().data("id"),arr)== -1)
 		{
 			arr.push($(this).parent().data("id"));
@@ -391,8 +421,18 @@ function getId(mainDiv,arr,addTo)
 			arr.splice( $.inArray($(this).parent().data("id"),arr) ,1 );
 		}
 
+
+		if($.inArray($(this).parent().parent().parent().data("id"),arr)== -1)
+		{
+		}
+		else
+		{
+			arr.splice( $.inArray($(this).parent().parent().parent().data("id"),arr) ,1 );
+		}
+
 		drawExampleList();
 		$( addTo).text("Ids: " +arr);
+		highlight(mainDiv,arr);
     });
 }
 
