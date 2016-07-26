@@ -103,7 +103,7 @@ var inputList=
 	]
 },{
 	"id": "9",
-	"name": "Schall",
+	"name": "ggggggg",
 	"type": "attribute",
 	"iconpath": "",
 	"description": "",
@@ -274,39 +274,140 @@ stringList="";
 
 var selInputList = [];
 var selOutputList = [];
+
 var filteredExampleList = [];
+var filteredInputList = [];
+var filteredOutputList = [];
+
+var isSearching=false;
+
 
 $( document ).ready(function() 
 {
 	createList(inputList,"input","#inputList-container");
 	createList(outputList,"output","#outputList-container");
-
 	idSelection();
 	drawExampleList();
-	//myHide("#inputList-container");
-	searchList();
-
+	searchList(filteredInputList,inputList,"#inputList-container");
+	searchList(filteredOutputList,outputList,"#outputList-container");
+	playnormalHide();
 });
 
-function searchList()
+
+
+function searchList(FilterList,Oldlist,div)
 {
 	$('.search-input').bind('keyup', function (evt) 
 	{
-		var searchText = evt.target.value.toLowerCase();
+		var  searchText = evt.target.value.toLowerCase();
 
-		console.log(searchText);
-		/*
-		$.each( $('.example-grid-item'), function(index, child) {
-			var titleText = $(this).data('title').toLowerCase().trim();
-			if(titleText.indexOf(searchText) !== -1) {
-				$(this).show();
-				$grid.masonry('layout');
-			} else {
-				$(this).hide();
-				$grid.masonry('layout');
+		if (searchText=="")
+		{
+			isSearching=false;
+		}
+		else
+		{
+			isSearching=true;
+		}
+		FilterList=Oldlist;
+		FilterList=FilterList.filter(function(e) 
+		{
+			var inList = false;
+			
+			for (var j in e.examples) 
+			{
+				if (e.examples[j].toLowerCase().trim().indexOf(searchText) !== -1) 
+				{
+					inList=true;
+				}
 			}
-		});*/
-	})
+
+			for (var i in e.tags) 
+			{
+				if (e.tags[i].toLowerCase().trim().indexOf(searchText) !== -1) 
+				{
+					inList=true;
+
+				}
+			}
+
+			if (e.name.toLowerCase().trim().indexOf(searchText) !== -1) 
+			{
+				inList=true;
+
+			}
+
+			return inList;
+		});	
+
+		if(isSearching==true)
+		{
+			var filterListIds=[];
+			for (var i in FilterList)
+			{
+				filterListIds.push(FilterList[i].id);
+			}
+			
+			$(""+div+" .selector").hide();
+			$(""+div+" p").hide();
+
+					
+			$( ""+div+" .selector" ).each(function( index ) 
+			{
+				for (var j in filterListIds)
+				{
+					if($(this).parent().data("id")==filterListIds[j])
+					{
+						$(this).show();
+						$(this).siblings().show();
+						$(this).parents().children().show();
+					}
+					
+				}
+			});
+		}
+
+		else
+		{
+			$( ""+div+" .selector" ).each(function( index ) 
+			{
+				$(this).siblings().show();
+				$(this).parent().children().show();
+				$(this).show();
+			});
+		}
+
+	});
+}
+
+function playnormalHide()
+{
+	if(isSearching==false)
+	{
+		$( ".selector" ).each(function( index ) 
+		{
+			$(this).siblings().show();
+			$(this).parent().children().show();
+			$(this).show();
+		});		
+	}
+
+	$( ".selector" ).click(function( index ) 
+	{
+		if(isSearching==true)
+		{
+			$('.search-input').val("");
+			isSearching=false;	
+			$(".selector" ).each(function( index ) 
+			{
+				$(this).siblings().show;
+				$(this).parent().children("p").show();
+				$(this).show();
+			});
+
+		}
+		
+	});	
 }
 
 function drawExampleList()
@@ -371,28 +472,6 @@ function idSelection()
 	highlight("#outputList-container",selOutputList);
 }
 
-/*function myHide(mainDiv)
-{
-	$( ""+mainDiv+" li .selector" ).each(function( index ) 
-	{
-		var currentLevel = $(this).closest('ul')
-		$("li p", currentLevel).slideUp(1);
-		$("li ul", currentLevel).slideUp(1);
-	});
-}
-
-function myopen()
-{
-	var newThis = $(this).parent();
-
-	$("li p", currentLevel).slideUp(1);
-
-
-
-	//.SlideUp(100)
-}*/
-
-
 function highlight(mainDiv,arr)
 {
 	$( ""+mainDiv+" .selector" ).each(function( index ) 
@@ -416,23 +495,22 @@ function getId(mainDiv,arr,addTo)
 		{
 			arr.push($(this).parent().data("id"));
 		}
+
 		else
 		{
 			arr.splice( $.inArray($(this).parent().data("id"),arr) ,1 );
 		}
 
+		
 
-		if($.inArray($(this).parent().parent().parent().data("id"),arr)== -1)
-		{
-		}
-		else
+		if($.inArray($(this).parent().parent().parent().data("id"),arr)!= -1)
 		{
 			arr.splice( $.inArray($(this).parent().parent().parent().data("id"),arr) ,1 );
 		}
 
 		drawExampleList();
 		$( addTo).text("Ids: " +arr);
-		highlight(mainDiv,arr);
+		highlight(mainDiv,arr);		
     });
 }
 
