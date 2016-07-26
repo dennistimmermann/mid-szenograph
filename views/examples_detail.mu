@@ -18,7 +18,7 @@
 				<img width="600px" src="/{{data.preview_image}}">
 				{{#data.video}}
 				<div class="video">
-				    <img src="/img/video.png">
+				    <img src="/img/video_icon.png">
 				    <a href="{{data.video}}">{{data.video}}</a>
 				</div>
 				{{/data.video}}

@@ -45,7 +45,7 @@ app.get('/admin', function (req, res) {
     })
 })
 
-//////////////// _________________________________ EXAMPLES
+//////////////// _________________________________ CONFIGURATOR
 
 app.route('/configurator')
     .get(function(req, res, next) {
@@ -74,6 +74,43 @@ app.route('/configurator')
                                 }
                                 res.render('configurator', {
                                     partials: {'header': 'header', 'footer': 'footer'}
+                                })
+                            })
+                        })
+                    })
+                })
+            })
+        })
+    })
+
+//////////////// _________________________________ CONFIGURATOR
+
+app.route('/datasheet')
+    .get(function(req, res, next) {
+        r.table('inputs').run(req.app._rdbConn, function(err, cursor) {
+            if(err) return next(err)
+
+            cursor.toArray(function(err, inputs) {
+                if(err) return next(err)
+
+                r.table('outputs').run(req.app._rdbConn, function(err, cursor) {
+                    if(err) return next(err)
+
+                    cursor.toArray(function(err, outputs) {
+                        if(err) return next(err)
+
+                        r.table('examples').run(req.app._rdbConn, function(err, cursor) {
+                            if(err) return next(err)
+
+                            cursor.toArray(function(err, examples) {
+                                if(err) return next(err)
+
+                                res.locals = {
+                                    inputlist: JSON.stringify(inputs),
+                                    outputlist: JSON.stringify(outputs),
+                                    examplelist: JSON.stringify(examples)
+                                }
+                                res.render('datasheet', {
                                 })
                             })
                         })

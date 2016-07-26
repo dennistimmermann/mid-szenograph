@@ -58,18 +58,21 @@
 
 #inputList-container
 {
+	padding-right: 10px;
 	overflow-y: scroll;
 	height: 480px;
 }
 
 #outputList-container
 {
+	padding-right: 10px;
 	overflow-y: scroll;
 	height: 480px;
 }
 
 #exampleList-container
 {
+	padding-right: 10px;
 	overflow-y: scroll;
 	height: 480px;
 }
@@ -91,7 +94,7 @@
 	font-style: italic;
 	color: #333;
 	margin: 0;
-	padding-left: 30px ! important;
+	padding-left: 25px ! important;
 }
 
 .selector 

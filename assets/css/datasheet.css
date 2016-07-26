@@ -1,0 +1,29 @@
+html, body {
+	background: #fff;
+}
+
+.sheet {
+	margin: 20px;
+}
+
+.sheet h1 {
+	margin-bottom: 10px;
+}
+
+.sheet-logo {
+	float: right;
+}
+
+.bold {
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.line {
+	border-bottom: 1px solid #333;
+}
+
+.noteline {
+	margin-top: 17px;
+	border-style: solid;
+}

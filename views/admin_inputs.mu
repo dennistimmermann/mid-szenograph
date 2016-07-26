@@ -19,9 +19,6 @@
 						<b>Typ</b>
 					</td>
 					<td>
-						<b>ID</b>
-					</td>
-					<td>
 						<b>Löschen</b>
 					</td>
 				</tr>
@@ -32,9 +29,6 @@
 						</td>
 						<td>
 							{{type}}
-						</td>
-						<td>
-							{{id}}
 						</td>
 						<td align="center">
 							<a href="/admin/inputs/{{id}}/delete"><img src="/img/close.png"></a>
