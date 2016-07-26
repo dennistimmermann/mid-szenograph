@@ -51,6 +51,14 @@
 	    			</div>
 				</div>
 			<div>
+			<div class="pdf-sheet">
+				<h1 class="inline-block">Ihr Projekt</h1>
+				<p>
+					Szenografisches Element:<i class="get-input"></i><br>
+					Szenografische Realisation:<i class="get-output"></i><br><br>
+					<a class="example-link" href="/datasheet">&#8594 PDF erstellen</a>
+				</p>
+			</div>
 		</main>
 
 		{{> footer }}

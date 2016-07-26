@@ -525,3 +525,11 @@ h2 {
 	width: 20px;
 	height: 14px;
 }
+
+.box-off {
+	display: none;
+}
+
+.pdf-sheet {
+	clear: both;
+}

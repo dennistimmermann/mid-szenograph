@@ -25,12 +25,23 @@
 				{{^data.video}}
 				{{/data.video}}
 				<p>
-					<b>Szenografisches Elemente:</b> Geschwindigkeit der Gestik<br/>
-					<b>Szenographische Realisationskomponente:</b> Lautstärke
+					<b>Szenografisches Elemente:</b> <i class="get-input"></i><br>
+					<b>Szenographische Realisationskomponente:</b> <i class="get-output"></i>
 				</p>
 				<p>
 					{{data.description}}
 				</p>
+				<div class="box-off input">
+					{{#inputlist}}
+						<input type="checkbox" name="inputs[]" value="{{id}}" {{#checked}}checked{{/checked}}><b>{{name}}</b>
+					{{/inputlist}}
+				</div>
+				<div class="box-off output">
+					{{#outputlist}}
+						<input type="checkbox" name="inputs[]" value="{{id}}" {{#checked}}checked{{/checked}}><b>{{name}}</b>
+					{{/outputlist}}
+				</div>
+
 			</div>
 			<!--<div class="more">
 				{{#list}}
@@ -43,5 +54,19 @@
 		{{> footer }}
 
 		<script src="/js/jquery-2.2.3.min.js"></script>
+		<script>
+			jQuery(document).ready(function ($) {
+				var inputs = [];
+				var outputs = [];
+				$('.input input:checked').each(function() {
+				    inputs.push($(this).next().text());
+				});
+				$('.output input:checked').each(function() {
+				    outputs.push($(this).next().text());
+				});
+				$('.get-input').html(inputs);
+				$('.get-output').html(outputs);
+			});
+		</script>
 	</body>
 </html>

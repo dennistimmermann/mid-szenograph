@@ -3,24 +3,134 @@ stringList="";
 var selInputList = [];
 var selOutputList = [];
 var filteredExampleList = [];
+var filteredInputList = [];
+var filteredOutputList = [];
+
+var isSearching=false;
 
 $( document ).ready(function() 
 {
 	createList(inputList,"Szenografisches Element","#inputList-container");
 	createList(outputList,"Szenografische Realisation","#outputList-container");
-
+	searchList(filteredInputList,inputList,"#inputList-container");
 	drawExampleList();
-	//myHide("#inputList-container");
-	searchList();
+	playnormalHide();
 
 });
 
-function searchList()
+function searchList(FilterList,Oldlist,div)
 {
 	$('.search-input').bind('keyup', function (evt) 
 	{
-		var searchText = evt.target.value.toLowerCase();
-	})
+		var  searchText = evt.target.value.toLowerCase();
+
+		if (searchText=="")
+		{
+			isSearching=false;
+		}
+		else
+		{
+			isSearching=true;
+		}
+		FilterList=Oldlist;
+		FilterList=FilterList.filter(function(e) 
+		{
+			var inList = false;
+			
+			for (var j in e.examples) 
+			{
+				if (e.examples[j].toLowerCase().trim().indexOf(searchText) !== -1) 
+				{
+					inList=true;
+				}
+			}
+
+			for (var i in e.tags) 
+			{
+				if (e.tags[i].toLowerCase().trim().indexOf(searchText) !== -1) 
+				{
+					inList=true;
+
+				}
+			}
+
+			if (e.name.toLowerCase().trim().indexOf(searchText) !== -1) 
+			{
+				inList=true;
+
+			}
+
+			return inList;
+		});	
+
+		if(isSearching==true)
+		{
+			var filterListIds=[];
+			for (var i in FilterList)
+			{
+				filterListIds.push(FilterList[i].id);
+			}
+			
+			$(""+div+" .selector").hide();
+			$(""+div+" p").hide();
+
+					
+			$( ""+div+" .selector" ).each(function( index ) 
+			{
+				for (var j in filterListIds)
+				{
+					if($(this).parent().data("id")==filterListIds[j])
+					{
+						$(this).show();
+						$(this).siblings().show();
+						$(this).parents().children().show();
+					}
+					
+				}
+			});
+		}
+
+		else
+		{
+			$( ""+div+" .selector" ).each(function( index ) 
+			{
+				$(this).siblings().show();
+				$(this).parent().children().show();
+				$(this).show();
+			});
+		}
+
+	});
+}
+
+function playnormalHide()
+{
+	if(isSearching==false)
+	{
+		$( ".selector" ).each(function( index ) 
+		{
+			$(this).siblings().show();
+			$(this).parent().children().show();
+			$(this).show();
+		});		
+	}
+
+	$( ".selector" ).click(function( index ) 
+	{
+		if(isSearching==true)
+		{
+			$('.search-input').val("");
+			isSearching=false;	
+			$(".selector" ).each(function( index ) 
+			{
+				$(this).siblings().show;
+				$(this).parent().children("p").show();
+				$(this).show();
+			});
+
+		}
+		
+	});	
 }
 
 function drawExampleList()
@@ -124,6 +234,27 @@ function createList(arr,startParameter,appendTo)
 	}
 	$(appendTo).append(stringList);
 	stringList="";
+}
+
+function filterList(selList,attribute)
+{
+	for (var i in selList) {
+		filteredExampleList=filteredExampleList.filter(function(e) {
+			var inList = false;
+			
+			for (var j in e[attribute]) 
+			{
+				if (e[attribute][j] == selList[i]) 
+				{
+					inList=true;
+				}
+			};
+
+			return inList;
+		});
+	}
+
+	return filteredExampleList
 }
 
 function createListPart(arr,this_items) 

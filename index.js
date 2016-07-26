@@ -169,7 +169,22 @@ app.route('/examples')
             })
         })
     })
+
 app.route('/examples/:id')
+    .get(function(req, res, next) {
+        exampleShowExampleDetail(req, res, function(results) {
+            res.locals = {
+                data: results,
+                inputlist: results.inputlist,
+                outputlist: results.outputlist
+            }
+            res.render('examples_detail', {
+                partials: {'header': 'header', 'footer': 'footer'}
+            })
+        })
+    })
+
+/*app.route('/examples/:id')
     .get(function(req, res, next) {
         exampleShowExampleDetail(req, res, function(results) {
             res.locals = {
@@ -179,7 +194,7 @@ app.route('/examples/:id')
                 partials: {'header': 'header', 'footer': 'footer'}
             })
         })
-    })
+    })*/
 
 //////////////// _________________________________ ADMIN INPUTS
 
@@ -417,7 +432,6 @@ app.route('/admin/examples/:id')
         })
     })
     .post(function(req, res, next) {
-        console.log(req.body)
         req.body.inputs = req.body.inputs || []
         req.body.outputs = req.body.outputs || []
         req.body.tags = _.trim(req.body.tags, ',').split(',')

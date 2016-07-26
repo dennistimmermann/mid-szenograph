@@ -7,6 +7,11 @@
 		<link href='https://fonts.googleapis.com/css?family=Hind:300,600,700' rel='stylesheet' type='text/css' />
 		<link href="css/main.css" rel="stylesheet" type="text/css" />
 		<link href="css/datasheet.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript">
+			var inputList = {{{inputlist}}}
+			var outputList = {{{outputlist}}}
+			var exampleList = {{{examplelist}}}
+		</script>
 	</head>
 
 	<body>
@@ -76,5 +81,6 @@
 		</div>
 
 		<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="js/configurator.js"></script>
 	</body>
 </html>

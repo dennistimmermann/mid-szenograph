@@ -133,6 +133,11 @@ h4
 	margin-bottom: 25px;
 }
 
+.pdf-sheet .example_link {
+	color: #dd5565 !important;
+	text-transform:none;
+}
+
 .highlight
 {
 	color: #dd5565 !important;

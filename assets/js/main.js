@@ -28,20 +28,6 @@ jQuery(document).ready(function ($) {
 		itemSelector: '.example-grid-item'
 	});
 
-	/*$('.example-search-input').bind('keyup', function (evt) {
-		var searchText = evt.target.value.toLowerCase();
-		$.each( $('.example-grid-item'), function(index, child) {
-			var titleText = $(this).data('title').toLowerCase().trim();
-			if(titleText.indexOf(searchText) !== -1) {
-				$(this).show();
-				$grid.masonry('layout');
-			} else {
-				$(this).hide();
-				$grid.masonry('layout');
-			}
-		});
-	})*/
-
 	var tags = [];
 
 	$('.example-search-input').keypress(function(e) {
@@ -73,7 +59,6 @@ jQuery(document).ready(function ($) {
 							for(var tag in tags){
 								if($.inArray(tags[tag],titleTags) !== -1){
 									hasTag++;
-									console.log("ya");
 								}
 							}
 							if(hasTag == tags.length){
