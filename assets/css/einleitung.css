@@ -1,0 +1,409 @@
+/**
+ * Basic layout, for animation examples, check demo.css
+ */
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Hind-Bold', sans-serif;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+    height: 100 vh;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+    #header {
+
+    }
+a {
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.25s ease;
+}
+a:hover {}
+h1 {
+
+}
+.text1{
+  font-size: 4em;
+  font-weight: 200;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: normal;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+h2 {
+
+}
+.text2{
+  font-weight: 300;
+  font-size: 2.3em;
+  line-height: 1.5em;
+
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-family: 'Hind-Bold', sans-serif;
+  text-transform: uppercase;
+}
+h3 {
+
+}
+.text3{
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: black;
+  margin: 80px 0 0 0;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.text4{
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: black;
+  margin: 80px 0 0 0;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+div.block {
+    position: relative;
+    height: 80vh;
+    padding: 20vh 15vw 0 15vw;
+    background-color: #dfdee0;
+}
+
+div.block2 {
+    position: relative;
+    height: 80vh;
+    padding: 20vh 15vw 0 15vw;
+    background-color: #b2b2b2;
+}
+
+div.block2 > img:first-child,
+div.block2 > img:last-child{
+  z-index: 2000;
+  max-width: 100%;
+  width: 100%;
+  left:0;
+  position: absolute;
+}
+div.block2 > img:first-child{
+  transform: translateY(-50%);
+  top: 0;
+}
+
+div.block2 > img:last-child  {
+
+  transform: translateY(50%);
+  bottom:  0;
+}
+
+.block2overlay {
+    position: relative;
+    z-index: 2000;
+    top: 50%;
+    transform: translateY(-100%);
+}
+.box_start {
+    margin-top: 80px;
+    /* display: block; */
+    text-align: center;
+    margin-left: -3px;
+}
+#logo {
+    position: absolute;
+    left: 50%;
+    z-index: 99;
+    transform: translateX(-50%) translateY(-50%) scale(1.5);
+}
+
+/*.box{
+  margin-top: 300px;
+  display: block;
+  text-align: center;
+  margin-left: -150px;
+
+}*/
+.hoch{
+  position: static;
+  height: 3000px;
+}
+div.logo {
+    float: left;
+    margin-left: 10px;
+    height: 100px;
+}
+.logo {
+    float: left;
+    margin-left: 10px;
+    height: 100px;
+}
+.logo2 {
+    /* float: left; */
+    margin: 10px;
+    height: 93px;
+    margin-top: -459px;
+    margin-bottom: -71px;
+    margin-left: -10px;
+    /* margin-top: 62px; */
+}
+.sz1 {
+    background: red;
+}
+.buhne {
+    height: 90%;
+}
+div.block svg {
+    position: absolute;
+    bottom: 98px;
+    width: 30px;
+    animation: chevronAnimation 4s ease-in-out 0s infinite;
+}
+.block3 {
+    position: relative;
+    height: 80vh;
+    padding: 50vh 15vw 0 15vw;
+    background-color: #3f3a3a;
+    color: white;
+}
+.block4 {
+    position: relative;
+    height: 80vh;
+    padding: 20vh 15vw 0 15vw;
+    background-color: #ead2d4;
+    color: white;
+}
+/*.block5 {
+  background-image: url(../img/quer.png);
+  height: 100%;
+  position: relative;
+  background-position: center;
+  padding: 80vh 21vw 0px 14vw;
+  transform-origin: 0px 0px 0px;
+  color: #e86d78;
+  overflow-x: hidden;
+  background-repeat: no-repeat;
+  z-index: 1000;
+  /* margin-left: -200px;
+
+}*/
+
+.block5 {
+    background-image: url(../start/quer.png);
+    height: 100%;
+    overflow-x: hidden;
+    background-size: 2200px 600px;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 600px;
+    padding: 30vh 15vw 0 15vw;
+
+
+}
+
+.block6 {
+
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 90vh;
+    padding: 20vh 15vw 0 15vw;
+        top: -229px;
+        /*background-color: white;*/
+
+}
+.hoch{
+  background: #ebebeb;
+}
+.textblock1{
+
+  position: relative;
+  max-width: 1200px;
+  margin: auto;
+    top: -129px;
+
+}
+.links{
+position: absolute;
+left:0;
+top:20px;
+width: 400px;
+height: 400px;
+
+}
+.rechts{
+  position: absolute;
+  right:0px;
+  top: 20px;
+  width: 400px;
+  height: 400px;
+
+}
+.blocklinks1 {
+    float: left;
+    margin-left: -92px;
+    color: black;
+    float: left;
+}
+.blockrechts1 {
+    float: right;
+    margin-left: 10px;
+    float: right;
+    margin-top: -289px;
+}
+.fontb1 {
+    color: #e86d78;
+    margin-left: 374px;
+    margin-top: 69px;
+}
+.fontb2 {
+    color: black;
+    margin-left: 374px;
+    margin-top: 69px;
+}
+.fonta {
+  color: black;
+margin-left: -312px;
+margin-top: -53px;
+}
+.herz {
+  height: 46px;
+  padding-left: -26px;
+  padding-right: 609px;
+  margin-top: -22px;
+  position: absolute;
+  left: 103px;
+  top: 100px;
+}
+.hand {
+    height: 48px;
+    padding-left: -26px;
+    padding-right: 889px;
+        position: absolute;
+}
+.handy {
+  height: 48px;
+padding-left: -26px;
+padding-right: 434px;
+position: absolute;
+left: 15px;
+top: 175px;
+}
+
+.auge {
+    height: 48px;
+    padding-left: -26px;
+
+    position: absolute;
+    right:3px;
+    top:150px;
+}
+
+.video{
+  position: absolute;
+
+  height: 48px;
+    top:100px;
+  left:-50px;
+}
+.face{
+  position: absolute;
+    height: 48px;
+    top: 300px;
+    right: 214px;
+}
+
+.blocklinks2 {
+
+}
+.blockrechts2 {
+  float: left;
+  margin-left: 10px;
+
+  margin-top: -289px;
+}
+.herz2 {
+  height: 46px;
+  padding-left: -26px;
+  padding-right: 609px;
+  margin-top: -22px;
+  position: absolute;
+  left: 103px;
+  top: 100px;
+}
+.media{
+  position: absolute;
+    height: 46px;
+    top:200px;
+}
+.licht{
+  position: absolute;
+    height: 46px;
+    top:10px;
+}
+.sound{
+  position: absolute;
+    height: 66px;
+    top:200px;
+}
+.messen{
+  position: absolute;
+   height: 62px;
+   top: 104px;
+   right: 30px;
+
+}
+div.block svg path {}
+div.block:nth-child(1n) {}
+div.block:nth-child(2n) {}
+div.block:nth-child(3n) {}
+
+/**
+ * Simple keyframes animation for the chevron on the first slide
+ */
+
+@keyframes chevronAnimation {
+    0% {
+        transform: translate(0, 0) scale(1.0, 1.0);
+    }
+    50% {
+        transform: translate(0, 5px) scale(0.8, 0.8);
+    }
+    100% {
+        transform: translate(0, 0) scale(1.0, 1.0);
+    }
+}
+
+/**
+ * Responsiveness
+ */
+
+@media screen and (max-width: 1024px) {
+    body {
+        font-size: 18px;
+        line-height: 27px;
+    }
+}
+@media screen and (max-width: 800px) {
+    h1 span {
+        display: block;
+    }
+    div.block {
+        height: 85vh;
+        padding: 15vh 15vw 0 15vw;
+    }
+}
+@media screen and (max-width: 420px) {
+    body {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+@media screen and (max-width: 360px) {
+    h1 {
+        font-size: 3em;
+    }
+}

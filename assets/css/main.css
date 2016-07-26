@@ -9,6 +9,10 @@ html, body {
 	background: #ebebeb;
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 a {
 	color: #333;
 	font-family: 'Hind', sans-serif;

@@ -25,7 +25,8 @@ app.set('views', './views')
 app.set('view engine', 'mu')
 
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+    res.render('index', {
+    })
 })
 
 app.get('/about', function (req, res) {
@@ -83,7 +84,7 @@ app.route('/configurator')
         })
     })
 
-//////////////// _________________________________ CONFIGURATOR
+//////////////// _________________________________ DATASHEET
 
 app.route('/datasheet')
     .get(function(req, res, next) {
@@ -168,10 +169,9 @@ app.route('/examples')
             })
         })
     })
-
 app.route('/examples/:id')
     .get(function(req, res, next) {
-        exampleShowExampleDetailPage(req, res, function(results) {
+        exampleShowExampleDetail(req, res, function(results) {
             res.locals = {
                 data: results
             }
@@ -185,7 +185,6 @@ app.route('/examples/:id')
 
 app.route('/admin/inputs')
     .get(function(req, res, next) {
-        console.log('imma here')
         r.table('inputs').run(req.app._rdbConn, function(err, cursor) {
             if(err) return next(err)
 
@@ -261,7 +260,6 @@ app.route('/admin/inputs/:id')
 
 app.route('/admin/outputs')
     .get(function(req, res, next) {
-        console.log('imma here')
         r.table('outputs').run(req.app._rdbConn, function(err, cursor) {
             if(err) return next(err)
 
@@ -352,74 +350,6 @@ app.route('/admin/examples')
             })
         })
     })
-// var exampleShowExampleDetail = function(req, res, callback) {
-//     r.table('examples').run(req.app._rdbConn, function(err, cursor) {
-//         if(err) return next(err)
-//
-//         cursor.toArray(function(err, result) {
-//             if(err || !result) return next(err)
-//
-//             requested = _.find(result, { 'id': req.params.id})
-//             if(requested == undefined) return next(new Error('id not found'))
-//
-//             requested.list = _.map(result, function(value, key) {
-//                 value.checked = _.includes(requested.items, value.id)
-//                 return value
-//             })
-//
-//             requested.selected = []
-//             requested.selected[requested.type] = true
-//
-//             callback(requested)
-//         })
-//     })
-// }
-/*var exampleShowExampleDetail = function(req, res, callback) {
-    r.table('examples').run(req.app._rdbConn, function(err, cursor) {
-        if(err) return next(err)
-
-        cursor.toArray(function(err, result) {
-            if(err || !result) return next(err)
-
-            requested = _.find(result, { 'id': req.params.id})
-            if(requested == undefined) return next(new Error('id not found'))
-
-            requested.list = _.map(result, function(value, key) {
-                value.checked = _.includes(requested.items, value.id)
-                return value
-            })
-
-            requested.selected = []
-            requested.selected[requested.type] = true
-
-            callback(requested)
-        })
-    })
-}*/
-
-// var outputShowOutputDetail = function(req, res, callback) {
-//     r.table('outputs').run(req.app._rdbConn, function(err, cursor) {
-//         if(err) return next(err)
-//
-//         cursor.toArray(function(err, result) {
-//             if(err || !result) return next(err)
-//
-//             requested = _.find(result, { 'id': req.params.id})
-//             if(requested == undefined) return next(new Error('id not found'))
-//
-//             requested.list = _.map(result, function(value, key) {
-//                 value.checked = _.includes(requested.items, value.id)
-//                 return value
-//             })
-//
-//             requested.selected = []
-//             requested.selected[requested.type] = true
-//
-//             callback(requested)
-//         })
-//     })
-// }
-
 var exampleShowExampleDetail = function(req, res, callback) {
     r.table('examples').run(req.app._rdbConn, function(err, cursor) {
         if(err) return next(err)
@@ -435,8 +365,6 @@ var exampleShowExampleDetail = function(req, res, callback) {
 
             r.table('inputs').run(req.app._rdbConn, function(err, cursor) {
                 if(err) return next(err)
-
-                // console.log("törö")
 
                 cursor.toArray(function(err, inputs) {
                     if(err) return next(err)
@@ -457,9 +385,6 @@ var exampleShowExampleDetail = function(req, res, callback) {
                             })
 
                             if(err) return next(err)
-
-                            // requested.inputlist = inputs
-                            // requested.outputlist = outputs
 
                             callback(requested)
                         })
@@ -486,7 +411,6 @@ app.route('/admin/examples/:id')
                 inputlist: requested.inputlist,
                 outputlist: requested.outputlist
             }
-            // console.log(requested)
             res.render('admin_examples_detail', {
 
             })
